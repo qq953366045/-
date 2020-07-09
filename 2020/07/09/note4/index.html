@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="note1"/>
+  <meta property="og:title" content="note4"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="Hexo"/>
   <meta property="og:type" content="article" />
@@ -47,7 +47,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">note1</p>
+          <p class="title">note4</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -103,7 +103,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2020-07-08</span>
+            <span class="date">2020-07-09</span>
             <span class="time">11:49:36</span>
           </span>
           
@@ -112,7 +112,7 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>1.1：使用#表示1-6级标题<br>比如二级标题：##这是一个二级标题<br>1.2：加粗体/加斜体：<br><strong>加粗的部分</strong>  表示加粗；<em>加斜的部分</em>  表示加斜<br>1.3：插入图片：<br>！[]（图片的url）<br>1.4：列表：<br>无序列表：句首加*<br>有序列表：句首加1.<br>*和1.后面都有空格，无序列表是句首是点的效果，有序列表是句首是1，2，3的效果<br>1.5：代码块：<br>、行内代码、<br>、、、行间代码、、、</p>
+          <p>4.3 分析用户行为<br>1：复杂统计出现最多的内容<br>GET /renders.test.com/g/agentsales/js/view.js HTTP/1.1<br>GET：当前的请求类型<br>/renders.test.com/g/agentsales/js/view.js：请求的网址<br>HTTP/1.1：请求的协议<br>2：统计网址请求次数前10名的命令：（请求的网址处于第8列）<br>cat cookie_log.log | awk ‘{print $8}’ | sort | uniq -c | sort -k1r | head -10<br>4.4 Shell脚本<br>1：脚本头：#！/bin/bash（必须放在脚本文件的第一行）<br>2：例子：#!/bin/bash<br>if [ -f ‘cookie_log.log’ ]; then<br>  cat cookie_log.log | awk ‘{print $8}’ | sort | uniq -c | sort -k1r | head -10<br>fi<br>if [ -f ‘cookie_log.log’ ];是判断cookie_log这个文件是否存在，存在就执行下面的命令。<br>3：保存：Shell脚本保存一般已.sh作为后缀结尾如top10.sh<br>4：运行：sh top10.sh</p>
 
         </div>
       </div>
