@@ -104,7 +104,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2020-07-09</span>
-            <span class="time">17:11:34</span>
+            <span class="time">17:34:39</span>
           </span>
           
         </div>
@@ -113,16 +113,15 @@
         <!-- Post Main Content -->
         <div class="post-content">
           <h2 id="4-3-分析用户行为"><a href="#4-3-分析用户行为" class="headerlink" title="4.3 分析用户行为"></a>4.3 分析用户行为</h2><h3 id="1：复杂统计出现最多的内容"><a href="#1：复杂统计出现最多的内容" class="headerlink" title="1：复杂统计出现最多的内容"></a>1：复杂统计出现最多的内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js HTTP&#x2F;1.1</span><br></pre></td></tr></table></figure>
-
-<pre><code>**GET**：当前的请求类型
-**/renders.test.com/g/agentsales/js/view.js**：请求的网址
-**HTTP/1.1**：请求的协议</code></pre><h3 id="2：统计网址请求次数前10名的命令：（请求的网址处于第8列）"><a href="#2：统计网址请求次数前10名的命令：（请求的网址处于第8列）" class="headerlink" title="2：统计网址请求次数前10名的命令：（请求的网址处于第8列）"></a>2：统计网址请求次数前10名的命令：（请求的网址处于第8列）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat cookie_log.log | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -k1r | head -10</span><br></pre></td></tr></table></figure>
-
+<p><strong>GET</strong>：当前的请求类型</p>
+<p><strong>/renders.test.com/g/agentsales/js/view.js</strong>：请求的网址</p>
+<p><strong>HTTP/1.1</strong>：请求的协议</p>
+<h3 id="2：统计网址请求次数前10名的命令：（请求的网址处于第8列）"><a href="#2：统计网址请求次数前10名的命令：（请求的网址处于第8列）" class="headerlink" title="2：统计网址请求次数前10名的命令：（请求的网址处于第8列）"></a>2：统计网址请求次数前10名的命令：（请求的网址处于第8列）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat cookie_log.log | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -k1r | head -10</span><br></pre></td></tr></table></figure>
 <h2 id="4-4-Shell脚本"><a href="#4-4-Shell脚本" class="headerlink" title="4.4 Shell脚本"></a>4.4 Shell脚本</h2><h3 id="1：脚本头："><a href="#1：脚本头：" class="headerlink" title="1：脚本头："></a>1：脚本头：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#！&#x2F;bin&#x2F;bash（必须放在脚本文件的第一行）</span><br></pre></td></tr></table></figure>
-
 <h3 id="2：例子："><a href="#2：例子：" class="headerlink" title="2：例子："></a>2：例子：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">if [ -f &#39;cookie_log.log&#39; ]; then</span><br><span class="line">  cat cookie_log.log | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -k1r | head -10</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<pre><code>**if [ -f &apos;cookie_log.log&apos; ];**是判断cookie_log这个文件是否存在，存在就执行后面的命令。</code></pre><h3 id="3：保存："><a href="#3：保存：" class="headerlink" title="3：保存："></a>3：保存：</h3><pre><code>Shell脚本保存一般已.sh作为后缀结尾如**top10.sh**</code></pre><h3 id="4：运行："><a href="#4：运行：" class="headerlink" title="4：运行："></a>4：运行：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh top10.sh</span><br></pre></td></tr></table></figure>
+<p><strong>if [ -f ‘cookie_log.log’ ];</strong>是判断cookie_log这个文件是否存在，存在就执行后面的命令。</p>
+<h3 id="3：保存："><a href="#3：保存：" class="headerlink" title="3：保存："></a>3：保存：</h3><p>Shell脚本保存一般已.sh作为后缀结尾如<strong>top10.sh</strong></p>
+<h3 id="4：运行："><a href="#4：运行：" class="headerlink" title="4：运行："></a>4：运行：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh top10.sh</span><br></pre></td></tr></table></figure>
 
         </div>
       </div>
