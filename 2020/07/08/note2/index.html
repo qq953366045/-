@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="2.1.1 查看本地SSHcat ~&#x2F;.ssh&#x2F;id_rsa.pub2.1.2 生成本地SSHssh-keygen -t rsa -b 4096 -C “your_email@example.com“  此处邮箱替换为注册GitHub的邮箱之后重新执行cat ~&#x2F;.ssh&#x2F;id_rsa.pub将获取的内容复制到GitHub中就行了。2.2.1 配置全局变量：1）git config –global">
+<meta name="description" content="2.1.1 查看本地SSH1cat ~&#x2F;.ssh&#x2F;id_rsa.pub 2.1.2 生成本地SSHssh-keygen -t rsa -b 4096 -C “your_email@example.com“  此处邮箱替换为注册GitHub的邮箱之后重新执行cat ~&#x2F;.ssh&#x2F;id_rsa.pub将获取的内容复制到GitHub中就行了。 2.2.1 配置全局变量：11.git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="note2">
 <meta property="og:url" content="http://yoursite.com/2020/07/08/note2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="2.1.1 查看本地SSHcat ~&#x2F;.ssh&#x2F;id_rsa.pub2.1.2 生成本地SSHssh-keygen -t rsa -b 4096 -C “your_email@example.com“  此处邮箱替换为注册GitHub的邮箱之后重新执行cat ~&#x2F;.ssh&#x2F;id_rsa.pub将获取的内容复制到GitHub中就行了。2.2.1 配置全局变量：1）git config –global">
+<meta property="og:description" content="2.1.1 查看本地SSH1cat ~&#x2F;.ssh&#x2F;id_rsa.pub 2.1.2 生成本地SSHssh-keygen -t rsa -b 4096 -C “your_email@example.com“  此处邮箱替换为注册GitHub的邮箱之后重新执行cat ~&#x2F;.ssh&#x2F;id_rsa.pub将获取的内容复制到GitHub中就行了。 2.2.1 配置全局变量：11.git">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-08T08:56:08.000Z">
-<meta property="article:modified_time" content="2020-07-08T08:56:51.062Z">
+<meta property="article:modified_time" content="2020-07-09T11:41:55.522Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -299,7 +299,20 @@
       
 
       
-        <p>2.1.1 查看本地SSH<br>cat ~/.ssh/id_rsa.pub<br>2.1.2 生成本地SSH<br>ssh-keygen -t rsa -b 4096 -C “<a href="mailto:your_email@example.com">your_email@example.com</a>“  此处邮箱替换为注册GitHub的邮箱<br>之后重新执行cat ~/.ssh/id_rsa.pub将获取的内容复制到GitHub中就行了。<br>2.2.1 配置全局变量：<br>1）git config –global user.name “沈高昂”<br>告诉git你的名字<br>2）git config –global user.email “<a href="mailto:953366045@qq.com">953366045@qq.com</a>“<br>告诉git你的邮箱<br>2.2.2 获取仓库地址<br>git clone <a href="mailto:git@github.com">git@github.com</a>:qq953366045/qq953366045.github.io.git<br>2.2.3 常见Linux命令<br>1.查看当前目录下的文件：ls<br>2.查看当前目录下的文件，包括隐藏文件：ls -a<br>3.创建文件：touch 文件名<br>4.创建文件夹：mkdir 文件夹名<br>5.进入某文件夹：cd 文件目录<br>6：删除文件：rm -rf 文件名<br>2.3.1 提交到GitHub上<br>步骤1：git add：可以用git add -A或者git add .  2个命令效果一样<br>步骤2：git commit：git commit -m “本次提交的修改的备注”<br>也可以直接用git commit -am “本次提交的修改的备注”来合并前2个步骤。<br>步骤3:git push:<br>第一次提交到本分支：git push origin master<br>origin是远程仓库的默认名称，master是我们的分支名称（主分支）<br>第二到n次提交到本分支可以直接用git push<br>提交到其他分支：git push origin b（会提交到b分支）<br>2.3.2 抓取远程仓库内容<br>git pull<br>2.4 绑定远程仓库<br>2.4.1 初始化git仓库：用git init将一个文件夹初始化为一个git仓库<br>2.4.2 绑定本地仓库：<br>git remote -v：查看当前git仓库绑定的远程仓库，显示空白即无绑定。<br>git remote add origin 仓库地址 （<a href="mailto:git@github.com">git@github.com</a>:qq953366045/youkeda.git）<br>绑定成功后用git remote -v可以查看是否绑定成功。<br>绑定错误可以用git remote remove origin来移除绑定</p>
+        <h3 id="2-1-1-查看本地SSH"><a href="#2-1-1-查看本地SSH" class="headerlink" title="2.1.1 查看本地SSH"></a>2.1.1 查看本地SSH</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-2-生成本地SSH"><a href="#2-1-2-生成本地SSH" class="headerlink" title="2.1.2 生成本地SSH"></a>2.1.2 生成本地SSH</h3><p>ssh-keygen -t rsa -b 4096 -C “<a href="mailto:your_email@example.com">your_email@example.com</a>“  此处邮箱替换为注册GitHub的邮箱<br>之后重新执行cat ~/.ssh/id_rsa.pub将获取的内容复制到GitHub中就行了。</p>
+<h3 id="2-2-1-配置全局变量："><a href="#2-2-1-配置全局变量：" class="headerlink" title="2.2.1 配置全局变量："></a>2.2.1 配置全局变量：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.git config --global user.name &quot;沈高昂&quot;</span><br></pre></td></tr></table></figure>
+<p>告诉git你的名字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.git config --global user.email &quot;953366045@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<p>告诉git你的邮箱</p>
+<h3 id="2-2-2-获取仓库地址"><a href="#2-2-2-获取仓库地址" class="headerlink" title="2.2.2 获取仓库地址"></a>2.2.2 获取仓库地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:qq953366045&#x2F;qq953366045.github.io.git</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-3-常见Linux命令"><a href="#2-2-3-常见Linux命令" class="headerlink" title="2.2.3 常见Linux命令"></a>2.2.3 常见Linux命令</h3><p>1.查看当前目录下的文件：ls<br>1.查看当前目录下的文件，包括隐藏文件：ls -a<br>1.创建文件：touch 文件名<br>1.创建文件夹：mkdir 文件夹名<br>1.进入某文件夹：cd 文件目录<br>1.删除文件：rm -rf 文件名</p>
+<h3 id="2-3-1-提交到GitHub上"><a href="#2-3-1-提交到GitHub上" class="headerlink" title="2.3.1 提交到GitHub上"></a>2.3.1 提交到GitHub上</h3><p>步骤1：git add：可以用git add -A或者git add .  2个命令效果一样<br>步骤2：git commit：git commit -m “本次提交的修改的备注”<br>也可以直接用git commit -am “本次提交的修改的备注”来合并前2个步骤。<br>步骤3:git push:<br>第一次提交到本分支：git push origin master<br>origin是远程仓库的默认名称，master是我们的分支名称（主分支）<br>第二到n次提交到本分支可以直接用git push<br>提交到其他分支：git push origin b（会提交到b分支）</p>
+<h3 id="2-3-2-抓取远程仓库内容"><a href="#2-3-2-抓取远程仓库内容" class="headerlink" title="2.3.2 抓取远程仓库内容"></a>2.3.2 抓取远程仓库内容</h3><p>git pull</p>
+<h3 id="2-4-绑定远程仓库"><a href="#2-4-绑定远程仓库" class="headerlink" title="2.4 绑定远程仓库"></a>2.4 绑定远程仓库</h3><h3 id="2-4-1-初始化git仓库："><a href="#2-4-1-初始化git仓库：" class="headerlink" title="2.4.1 初始化git仓库："></a>2.4.1 初始化git仓库：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>git init会将一个文件夹初始化为一个git仓库</p>
+<h3 id="2-4-2-绑定本地仓库："><a href="#2-4-2-绑定本地仓库：" class="headerlink" title="2.4.2 绑定本地仓库："></a>2.4.2 绑定本地仓库：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote -v：查看当前git仓库绑定的远程仓库，显示空白即无绑定。</span><br><span class="line">git remote add origin git@github.com:qq953366045&#x2F;youkeda.git(这里我用的自己的仓库地址)</span><br></pre></td></tr></table></figure>
+<p>绑定成功后用<code>git remote -v</code>可以查看是否绑定成功。<br>绑定错误可以用<code>git remote remove origin</code>来移除绑定</p>
 
       
     </div>
@@ -388,8 +401,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -431,6 +453,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-查看本地SSH"><span class="nav-number">1.</span> <span class="nav-text">2.1.1 查看本地SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-生成本地SSH"><span class="nav-number">2.</span> <span class="nav-text">2.1.2 生成本地SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-配置全局变量："><span class="nav-number">3.</span> <span class="nav-text">2.2.1 配置全局变量：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-获取仓库地址"><span class="nav-number">4.</span> <span class="nav-text">2.2.2 获取仓库地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-常见Linux命令"><span class="nav-number">5.</span> <span class="nav-text">2.2.3 常见Linux命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-提交到GitHub上"><span class="nav-number">6.</span> <span class="nav-text">2.3.1 提交到GitHub上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-抓取远程仓库内容"><span class="nav-number">7.</span> <span class="nav-text">2.3.2 抓取远程仓库内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-绑定远程仓库"><span class="nav-number">8.</span> <span class="nav-text">2.4 绑定远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-初始化git仓库："><span class="nav-number">9.</span> <span class="nav-text">2.4.1 初始化git仓库：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-绑定本地仓库："><span class="nav-number">10.</span> <span class="nav-text">2.4.2 绑定本地仓库：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
