@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="4.3 分析用户行为1：复杂统计出现最多的内容1GET &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js HTTP&#x2F;1.1 GET：当前的请求类型 &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js：请求的网址 HTTP&#x2F;1.1：请求的协议 2：统计网址请求次数前10名的命">
+<meta name="description" content="4.3 分析用户行为1：复杂统计出现最多的内容1GET &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js HTTP&#x2F;1.1 GET：当前的请求类型 &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js：请求的网址 HTTP&#x2F;1.1：请求的协议">
 <meta property="og:type" content="article">
 <meta property="og:title" content="note4">
 <meta property="og:url" content="http://yoursite.com/2020/07/09/note4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="4.3 分析用户行为1：复杂统计出现最多的内容1GET &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js HTTP&#x2F;1.1 GET：当前的请求类型 &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js：请求的网址 HTTP&#x2F;1.1：请求的协议 2：统计网址请求次数前10名的命">
+<meta property="og:description" content="4.3 分析用户行为1：复杂统计出现最多的内容1GET &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js HTTP&#x2F;1.1 GET：当前的请求类型 &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js：请求的网址 HTTP&#x2F;1.1：请求的协议">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-09T03:49:09.000Z">
-<meta property="article:modified_time" content="2020-07-09T09:34:30.011Z">
+<meta property="article:modified_time" content="2020-07-10T11:37:18.449Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -335,6 +335,7 @@
 <p><strong>GET</strong>：当前的请求类型</p>
 <p><strong>/renders.test.com/g/agentsales/js/view.js</strong>：请求的网址</p>
 <p><strong>HTTP/1.1</strong>：请求的协议</p>
+<a id="more"></a>
 <h3 id="2：统计网址请求次数前10名的命令：（请求的网址处于第8列）"><a href="#2：统计网址请求次数前10名的命令：（请求的网址处于第8列）" class="headerlink" title="2：统计网址请求次数前10名的命令：（请求的网址处于第8列）"></a>2：统计网址请求次数前10名的命令：（请求的网址处于第8列）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat cookie_log.log | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -k1r | head -10</span><br></pre></td></tr></table></figure>
 <h2 id="4-4-Shell脚本"><a href="#4-4-Shell脚本" class="headerlink" title="4.4 Shell脚本"></a>4.4 Shell脚本</h2><h3 id="1：脚本头："><a href="#1：脚本头：" class="headerlink" title="1：脚本头："></a>1：脚本头：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#！&#x2F;bin&#x2F;bash（必须放在脚本文件的第一行）</span><br></pre></td></tr></table></figure>
 <h3 id="2：例子："><a href="#2：例子：" class="headerlink" title="2：例子："></a>2：例子：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">if [ -f &#39;cookie_log.log&#39; ]; then</span><br><span class="line">  cat cookie_log.log | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -k1r | head -10</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>

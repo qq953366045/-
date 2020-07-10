@@ -455,19 +455,17 @@
 
       
         
-          
-            <h2 id="4-3-分析用户行为"><a href="#4-3-分析用户行为" class="headerlink" title="4.3 分析用户行为"></a>4.3 分析用户行为</h2><h3 id="1：复杂统计出现最多的内容"><a href="#1：复杂统计出现最多的内容" class="headerlink" title="1：复杂统计出现最多的内容"></a>1：复杂统计出现最多的内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js HTTP&#x2F;1.1</span><br></pre></td></tr></table></figure>
+          <h2 id="4-3-分析用户行为"><a href="#4-3-分析用户行为" class="headerlink" title="4.3 分析用户行为"></a>4.3 分析用户行为</h2><h3 id="1：复杂统计出现最多的内容"><a href="#1：复杂统计出现最多的内容" class="headerlink" title="1：复杂统计出现最多的内容"></a>1：复杂统计出现最多的内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;renders.test.com&#x2F;g&#x2F;agentsales&#x2F;js&#x2F;view.js HTTP&#x2F;1.1</span><br></pre></td></tr></table></figure>
 <p><strong>GET</strong>：当前的请求类型</p>
 <p><strong>/renders.test.com/g/agentsales/js/view.js</strong>：请求的网址</p>
 <p><strong>HTTP/1.1</strong>：请求的协议</p>
-<h3 id="2：统计网址请求次数前10名的命令：（请求的网址处于第8列）"><a href="#2：统计网址请求次数前10名的命令：（请求的网址处于第8列）" class="headerlink" title="2：统计网址请求次数前10名的命令：（请求的网址处于第8列）"></a>2：统计网址请求次数前10名的命令：（请求的网址处于第8列）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat cookie_log.log | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -k1r | head -10</span><br></pre></td></tr></table></figure>
-<h2 id="4-4-Shell脚本"><a href="#4-4-Shell脚本" class="headerlink" title="4.4 Shell脚本"></a>4.4 Shell脚本</h2><h3 id="1：脚本头："><a href="#1：脚本头：" class="headerlink" title="1：脚本头："></a>1：脚本头：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#！&#x2F;bin&#x2F;bash（必须放在脚本文件的第一行）</span><br></pre></td></tr></table></figure>
-<h3 id="2：例子："><a href="#2：例子：" class="headerlink" title="2：例子："></a>2：例子：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">if [ -f &#39;cookie_log.log&#39; ]; then</span><br><span class="line">  cat cookie_log.log | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -k1r | head -10</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<p><strong>if [ -f ‘cookie_log.log’ ];</strong>是判断cookie_log这个文件是否存在，存在就执行后面的命令。</p>
-<h3 id="3：保存："><a href="#3：保存：" class="headerlink" title="3：保存："></a>3：保存：</h3><p>Shell脚本保存一般已.sh作为后缀结尾如<strong>top10.sh</strong></p>
-<h3 id="4：运行："><a href="#4：运行：" class="headerlink" title="4：运行："></a>4：运行：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh top10.sh</span><br></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/09/note4/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -584,36 +582,15 @@
 
       
         
-          
-            <h2 id="3-1-初识Hexo"><a href="#3-1-初识Hexo" class="headerlink" title="3.1 初识Hexo"></a>3.1 初识Hexo</h2><h3 id="3-1-1-创建博客文件夹："><a href="#3-1-1-创建博客文件夹：" class="headerlink" title="3.1.1 创建博客文件夹："></a>3.1.1 创建博客文件夹：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+          <h2 id="3-1-初识Hexo"><a href="#3-1-初识Hexo" class="headerlink" title="3.1 初识Hexo"></a>3.1 初识Hexo</h2><h3 id="3-1-1-创建博客文件夹："><a href="#3-1-1-创建博客文件夹：" class="headerlink" title="3.1.1 创建博客文件夹："></a>3.1.1 创建博客文件夹：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
 <p>此处blog为文件夹名字，可任意取名</p>
-<h3 id="3-1-2-安装发布工具：（必须在博客文件夹目录下安装-）"><a href="#3-1-2-安装发布工具：（必须在博客文件夹目录下安装-）" class="headerlink" title="3.1.2 安装发布工具：（必须在博客文件夹目录下安装!）"></a>3.1.2 安装发布工具：（<strong>必须在博客文件夹目录下安装!</strong>）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h3 id="3-1-3-修改配置文件"><a href="#3-1-3-修改配置文件" class="headerlink" title="3.1.3 修改配置文件"></a>3.1.3 修改配置文件</h3><p>找到_config.yml文件，打开输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">theme:landscape</span><br><span class="line">deploy:</span><br><span class="line">	type:git</span><br><span class="line">                repository:git@github.com:qq953366045&#x2F;qq953366045.github.io.git(这里是自己的仓库地址)</span><br><span class="line">	branch:master</span><br></pre></td></tr></table></figure>
-<h3 id="3-1-4-Hexo提交"><a href="#3-1-4-Hexo提交" class="headerlink" title="3.1.4 Hexo提交"></a>3.1.4 Hexo提交</h3><ol>
-<li>hexo clean：清除缓存，能让新发布的博客快速生效</li>
-<li>hexo generate：生成新的静态文件，可以简写为hexo g</li>
-<li>hexo deploy：把生成的文件部署到博客上，可以简写为hexo d</li>
-</ol>
-<h2 id="3-2-Hexo的应用"><a href="#3-2-Hexo的应用" class="headerlink" title="3.2 Hexo的应用"></a>3.2 Hexo的应用</h2><h3 id="3-2-1-创建博客："><a href="#3-2-1-创建博客：" class="headerlink" title="3.2.1 创建博客："></a>3.2.1 创建博客：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 博客名</span><br></pre></td></tr></table></figure>
-<p>该命令会创建一个新的md文件存放在source/_posts文件夹内</p>
-<h3 id="3-2-2-发布博客："><a href="#3-2-2-发布博客：" class="headerlink" title="3.2.2 发布博客："></a>3.2.2 发布博客：</h3><p>参考hexo提交</p>
-<h3 id="3-2-3-更换主题：（本次更换是把landscape改为next）"><a href="#3-2-3-更换主题：（本次更换是把landscape改为next）" class="headerlink" title="3.2.3 更换主题：（本次更换是把landscape改为next）"></a>3.2.3 更换主题：（本次更换是把landscape改为next）</h3><p>1.在博客跟目录中下载next新主题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
-<p>这里<a href="https://github.com/iissnan/hexo-theme-next是该主题的仓库地址，后面的themes/next表示下载到themes文件夹下" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next是该主题的仓库地址，后面的themes/next表示下载到themes文件夹下</a><br>1.更改文件配置：<br>打开_config.yml，将theme： landscape改为theme： next（：后有个空格）<br>1.发布更改：<br>提交hexo</p>
-<h2 id="3-3-Git分支-amp-Git-ignore"><a href="#3-3-Git分支-amp-Git-ignore" class="headerlink" title="3.3 Git分支&amp;Git ignore"></a>3.3 Git分支&amp;Git ignore</h2><h3 id="3-3-1-创建分支："><a href="#3-3-1-创建分支：" class="headerlink" title="3.3.1 创建分支："></a>3.3.1 创建分支：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名</span><br></pre></td></tr></table></figure>
-<p>切换分支：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev（创建的分支名为dev）</span><br></pre></td></tr></table></figure>
-<p>也可以直接用<code>git checkout -b dev</code>（相当于创建了dev分支并切换到它）</p>
-<h3 id="3-3-2-查看gitignore文件"><a href="#3-3-2-查看gitignore文件" class="headerlink" title="3.3.2 查看gitignore文件"></a>3.3.2 查看gitignore文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.lognode_modules&#x2F;</span><br><span class="line">public&#x2F;</span><br><span class="line">.deploy*&#x2F;</span><br></pre></td></tr></table></figure>
-<p>表示提交时这些不会被提交到线上仓库，如果没有public/得自己添加一行</p>
-<h2 id="3-4-本地电脑部署博客"><a href="#3-4-本地电脑部署博客" class="headerlink" title="3.4 本地电脑部署博客"></a>3.4 本地电脑部署博客</h2><p>1.首先安装git<br>1.本地配置ssh并绑定至GitHub<br>1.生成本地SSH：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;953366045@qq.com&quot;</span><br></pre></td></tr></table></figure>
-<p>1.之后执行cat ~/.ssh/id_rsa.pub将获取的内容复制到GitHub中就行了<br>1.然后安装node.js，之后本地安装Hexo：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>1.之后将dev分支的代码git clone到本地</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:qq953366045&#x2F;qq953366045.github.io.git dev</span><br></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/08/note3/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -730,21 +707,14 @@
 
       
         
-          
-            <h3 id="2-1-1-查看本地SSH"><a href="#2-1-1-查看本地SSH" class="headerlink" title="2.1.1 查看本地SSH"></a>2.1.1 查看本地SSH</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
-<h3 id="2-1-2-生成本地SSH"><a href="#2-1-2-生成本地SSH" class="headerlink" title="2.1.2 生成本地SSH"></a>2.1.2 生成本地SSH</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
-<p>此处邮箱替换为注册GitHub的邮箱;之后重新执行cat ~/.ssh/id_rsa.pub将获取的内容复制到GitHub中就行了。</p>
-<h3 id="2-2-1-配置全局变量："><a href="#2-2-1-配置全局变量：" class="headerlink" title="2.2.1 配置全局变量："></a>2.2.1 配置全局变量：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;沈高昂&quot;</span><br><span class="line">git config --global user.email &quot;953366045@qq.com&quot;</span><br></pre></td></tr></table></figure>
-<p>告诉git你的名字和你的邮箱。</p>
-<h3 id="2-2-2-获取仓库地址"><a href="#2-2-2-获取仓库地址" class="headerlink" title="2.2.2 获取仓库地址"></a>2.2.2 获取仓库地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:qq953366045&#x2F;qq953366045.github.io.git</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-3-常见Linux命令"><a href="#2-2-3-常见Linux命令" class="headerlink" title="2.2.3 常见Linux命令"></a>2.2.3 常见Linux命令</h3><p>1：查看当前目录下的文件：<code>ls</code><br>2：查看当前目录下的文件，包括隐藏文件：<code>ls -a</code><br>3：创建文件：<code>touch 文件名</code><br>4：创建文件夹：<code>mkdir 文件夹名</code><br>5：进入某文件夹：<code>cd 文件目录</code><br>6：删除文件：<code>rm -rf 文件名</code></p>
-<h3 id="2-3-1-提交到GitHub上"><a href="#2-3-1-提交到GitHub上" class="headerlink" title="2.3.1 提交到GitHub上"></a>2.3.1 提交到GitHub上</h3><p>步骤1：<strong>git add</strong>：<br>可以用<code>git add -A</code>或者<code>git add</code>.  2个命令效果一样;<br>步骤2：<strong>git commit</strong>：<br><code>git commit -m &quot;本次提交的修改的备注&quot;</code><br>也可以直接用<code>git commit -am &quot;本次提交的修改的备注&quot;</code>来合并前2个步骤。<br>步骤3:<strong>git push</strong>:<br>第一次提交到本分支：<code>git push origin master</code><br><strong>origin</strong>是远程仓库的默认名称，<strong>master</strong>是我们的分支名称（主分支）<br>第二到n次提交到本分支可以直接用<code>git push</code><br>提交到其他分支：<code>git push origin b</code>（会提交到b分支）</p>
-<h3 id="2-3-2-抓取远程仓库内容-git-pull"><a href="#2-3-2-抓取远程仓库内容-git-pull" class="headerlink" title="2.3.2 抓取远程仓库内容 :git pull"></a>2.3.2 抓取远程仓库内容 :<code>git pull</code></h3><h3 id="2-4-绑定远程仓库"><a href="#2-4-绑定远程仓库" class="headerlink" title="2.4 绑定远程仓库"></a>2.4 绑定远程仓库</h3><h3 id="2-4-1-初始化git仓库："><a href="#2-4-1-初始化git仓库：" class="headerlink" title="2.4.1 初始化git仓库："></a>2.4.1 初始化git仓库：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-<p>git init会将一个文件夹初始化为一个git仓库</p>
-<h3 id="2-4-2-绑定本地仓库："><a href="#2-4-2-绑定本地仓库：" class="headerlink" title="2.4.2 绑定本地仓库："></a>2.4.2 绑定本地仓库：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote -v：查看当前git仓库绑定的远程仓库，显示空白即无绑定。</span><br><span class="line">git remote add origin git@github.com:qq953366045&#x2F;youkeda.git(这里我用的自己的仓库地址)</span><br></pre></td></tr></table></figure>
-<p>绑定成功后用<code>git remote -v</code>可以查看是否绑定成功。<br>绑定错误可以用<code>git remote remove origin</code>来移除绑定</p>
-
-          
+          <h3 id="2-1-1-查看本地SSH"><a href="#2-1-1-查看本地SSH" class="headerlink" title="2.1.1 查看本地SSH"></a>2.1.1 查看本地SSH</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/08/note2/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -861,15 +831,14 @@
 
       
         
-          
-            <h2 id="博客书写格式"><a href="#博客书写格式" class="headerlink" title="博客书写格式"></a>博客书写格式</h2><h3 id="1-1：使用-表示1-6级标题"><a href="#1-1：使用-表示1-6级标题" class="headerlink" title="1.1：使用#表示1-6级标题"></a>1.1：使用#表示1-6级标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">比如二级标题：##这是一个二级标题</span><br></pre></td></tr></table></figure>
-<h3 id="1-2：加粗体-加斜体："><a href="#1-2：加粗体-加斜体：" class="headerlink" title="1.2：加粗体/加斜体："></a>1.2：加粗体/加斜体：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**加粗的部分**  表示加粗；*加斜的部分*  表示加斜</span><br></pre></td></tr></table></figure>
-<h3 id="1-3：插入图片："><a href="#1-3：插入图片：" class="headerlink" title="1.3：插入图片："></a>1.3：插入图片：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">！[]（图片的url）</span><br></pre></td></tr></table></figure>
-<h3 id="1-4：列表："><a href="#1-4：列表：" class="headerlink" title="1.4：列表："></a>1.4：列表：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">无序列表：句首加*</span><br><span class="line">有序列表：句首加1.</span><br><span class="line">*和1.后面都有空格，无序列表是句首是点的效果，有序列表是句首是1，2，3的效果</span><br></pre></td></tr></table></figure>
-<h3 id="1-5：代码块："><a href="#1-5：代码块：" class="headerlink" title="1.5：代码块："></a>1.5：代码块：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#96;行内代码&#96;</span><br><span class="line">&#96;&#96;&#96;行间代码</span><br></pre></td></tr></table></figure>
-<p>```</p>
-
-          
+          <h2 id="博客书写格式"><a href="#博客书写格式" class="headerlink" title="博客书写格式"></a>博客书写格式</h2><h3 id="1-1：使用-表示1-6级标题"><a href="#1-1：使用-表示1-6级标题" class="headerlink" title="1.1：使用#表示1-6级标题"></a>1.1：使用#表示1-6级标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">比如二级标题：##这是一个二级标题</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/08/note1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
