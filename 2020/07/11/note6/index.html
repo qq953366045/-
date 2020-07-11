@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="6.1 动态规划之经典题目现在你是一个专业的小偷，计划偷窃沿街的房屋。每个房间里都有一定的现金，影响你偷窃的唯一制约是两个相邻的房间装有互相连同通的防盗系统，也就是如果两个相邻的房间在同一晚上被小偷盗窃，系统会自动报警。请在不触动警报装置的情况下，盗窃到最高金额的现金。案例 1： 1234输入（房间依次现金）: [1,2,3,1]输出: 4解释: 偷窃 1 号房屋 (金额 &#x3D; 1) ，然">
+<meta property="og:type" content="article">
+<meta property="og:title" content="note6">
+<meta property="og:url" content="http://yoursite.com/2020/07/11/note6/index.html">
+<meta property="og:site_name" content="咕噜咕噜咕噜">
+<meta property="og:description" content="6.1 动态规划之经典题目现在你是一个专业的小偷，计划偷窃沿街的房屋。每个房间里都有一定的现金，影响你偷窃的唯一制约是两个相邻的房间装有互相连同通的防盗系统，也就是如果两个相邻的房间在同一晚上被小偷盗窃，系统会自动报警。请在不触动警报装置的情况下，盗窃到最高金额的现金。案例 1： 1234输入（房间依次现金）: [1,2,3,1]输出: 4解释: 偷窃 1 号房屋 (金额 &#x3D; 1) ，然">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-11T04:45:57.000Z">
+<meta property="article:modified_time" content="2020-07-11T04:46:07.247Z">
+<meta property="article:author" content="沈高昂">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/11/note6/"/>
+
+
+
+
+
+  <title>note6 | 咕噜咕噜咕噜</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">咕噜咕噜咕噜</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/11/note6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="沈高昂">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="咕噜咕噜咕噜">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">note6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-11T12:45:57+08:00">
+                2020-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="6-1-动态规划之经典题目"><a href="#6-1-动态规划之经典题目" class="headerlink" title="6.1 动态规划之经典题目"></a>6.1 动态规划之经典题目</h2><p>现在你是一个专业的小偷，计划偷窃沿街的房屋。每个房间里都有一定的现金，影响你偷窃的唯一制约是两个相邻的房间装有互相连同通的防盗系统，也就是如果<strong>两个相邻的房间在同一晚上被小偷盗窃，系统会自动报警</strong>。请在<strong>不触动警报装置的情况下</strong>，盗窃到最高金额的现金。<br>案例 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入（房间依次现金）: [1,2,3,1]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 偷窃 1 号房屋 (金额 &#x3D; 1) ，然后偷窃 3 号房屋 (金额 &#x3D; 3)。</span><br><span class="line">偷窃到的最高金额 &#x3D; 1 + 3 &#x3D; 4 。</span><br></pre></td></tr></table></figure>
+<p>案例 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,7,9,3,1]</span><br><span class="line">输出: 12</span><br><span class="line">解释: 偷窃 1 号房屋 (金额 &#x3D; 2), 偷窃 3 号房屋 (金额 &#x3D; 9)，接着偷</span><br><span class="line">偷窃到的最高金额 &#x3D; 2 + 9 + 1 &#x3D; 12 。</span><br></pre></td></tr></table></figure>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><ol>
+<li>右边内置了两组测试用例，所以在每次调用之前，请清空cache 。</li>
+<li>可以从右侧考虑是否需要偷，依次往左侧进行分解。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.youkeda;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">public class Demo &#123;</span><br><span class="line">	public static HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">	&#x2F;&#x2F; 一夜之间获取的最高现金</span><br><span class="line">	public static int f(int[] rooms) &#123;</span><br><span class="line">		&#x2F;&#x2F; 每次调用的时候，将cache清空</span><br><span class="line">		cache.clear();</span><br><span class="line">		&#x2F;&#x2F; 从右侧开始考虑是否偷盗，有新的思路也可以按照自己思路来</span><br><span class="line">		return fCore(rooms, rooms.length - 1);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static int fCore(int[] rooms, int index) &#123;</span><br><span class="line">	  if(index&lt;0)</span><br><span class="line">	    return 0;</span><br><span class="line">	  if(index&#x3D;&#x3D;0)</span><br><span class="line">	    return rooms[index];</span><br><span class="line">	  if (cache.containsKey(index)) &#123;</span><br><span class="line">			return cache.get(index);</span><br><span class="line">		&#125;</span><br><span class="line">		int num&#x3D;0,num1&#x3D;0,max&#x3D;0;</span><br><span class="line">		for(int i&#x3D;0;i&lt;&#x3D;index;i&#x3D;i+2)</span><br><span class="line">		  num&#x3D;rooms[i]+num;</span><br><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;index;i&#x3D;i+2)</span><br><span class="line">		  num1&#x3D;rooms[i]+num1;  </span><br><span class="line">		max&#x3D;Math.max(num,num1);</span><br><span class="line">		cache.put(index, max);</span><br><span class="line">		return max;</span><br><span class="line">	&#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int[] rooms1 &#x3D; &#123;1, 2, 3, 1&#125;;</span><br><span class="line">		System.out.println(&quot;&#123;1,2,3,1&#125;&quot; + f(rooms1));</span><br><span class="line">		int[] rooms2 &#x3D; &#123;2, 7, 9, 3, 1&#125;;</span><br><span class="line">		System.out.println(&quot;&#123;2,7,9,3,1&#125;&quot; + f(rooms2));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+这是第一次的代码，后面为改进后的代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">package com.youkeda;</span><br><span class="line"></span><br><span class="line">import java.util.HashMap;</span><br><span class="line"></span><br><span class="line">public class Demo &#123;</span><br><span class="line"></span><br><span class="line">	public static HashMap&lt;Integer, Integer&gt; cache &#x3D; new HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 一夜之间获取的最高现金</span><br><span class="line">	public static int f(int[] rooms) &#123;</span><br><span class="line">		&#x2F;&#x2F; 每次调用的时候，将cache情况</span><br><span class="line">		cache.clear();</span><br><span class="line">		return fCore(rooms, rooms.length - 1);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static int fCore(int[] rooms, int index) &#123;</span><br><span class="line">		&#x2F;&#x2F; 处理边界情况</span><br><span class="line">		if (index &lt; 0) &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">		if (index &#x3D;&#x3D; 0) &#123;</span><br><span class="line">			return rooms[index];</span><br><span class="line">		&#125;</span><br><span class="line">		if (cache.containsKey(index)) &#123;</span><br><span class="line">			return cache.get(index);</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F; 最后一个房间偷或者不偷两种情况。</span><br><span class="line">		int max &#x3D; Math.max(fCore(rooms, index - 1), fCore(rooms, index - 2) + rooms[index]);</span><br><span class="line">		cache.put(index, max);</span><br><span class="line">		return max;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">		int[] rooms1 &#x3D; &#123;1, 2, 3, 1&#125;;</span><br><span class="line">		System.out.println(&quot;&#123;1,2,3,1&#125;&quot; + f(rooms1));</span><br><span class="line">		int[] rooms2 &#x3D; &#123;2, 7, 9, 3, 1&#125;;</span><br><span class="line">		System.out.println(&quot;&#123;2,7,9,3,1&#125;&quot; + f(rooms2));</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/10/note5/" rel="next" title="note5">
+                <i class="fa fa-chevron-left"></i> note5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/1.jpg"
+                alt="沈高昂" />
+            
+              <p class="site-author-name" itemprop="name">沈高昂</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-动态规划之经典题目"><span class="nav-number">1.</span> <span class="nav-text">6.1 动态规划之经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提示"><span class="nav-number">1.1.</span> <span class="nav-text">提示</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沈高昂</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
