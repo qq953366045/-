@@ -87,7 +87,7 @@
 <meta property="og:description" content="21：获取时间 123456789import java.time.LocalDate;public class DateTest &amp;#123;  public static void main(String[] args) &amp;#123;    &#x2F;&#x2F; 得到当前的完整时间    LocalDate now &#x3D; LocalDate.now();    &#x2F;&amp;#x2">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-13T08:24:30.000Z">
-<meta property="article:modified_time" content="2020-09-03T08:27:54.053Z">
+<meta property="article:modified_time" content="2020-09-03T08:30:18.384Z">
 <meta property="article:author" content="沈高昂">
 <meta name="twitter:card" content="summary">
 
@@ -355,6 +355,7 @@
       
         <h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>1：获取时间</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import java.time.LocalDate;</span><br><span class="line">public class DateTest &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    &#x2F;&#x2F; 得到当前的完整时间</span><br><span class="line">    LocalDate now &#x3D; LocalDate.now();</span><br><span class="line">    &#x2F;&#x2F; 打印出时间</span><br><span class="line">    System.out.println(now.toString());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>2:日期时间和字符串的转化</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import java.time.LocalDate;</span><br><span class="line">import java.time.format.DateTimeFormatter;</span><br><span class="line">public class DateTest5 &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    LocalDate time &#x3D; LocalDate.now();</span><br><span class="line">    &#x2F;&#x2F; 打印默认的时间数据</span><br><span class="line">    System.out.println(time.toString());</span><br><span class="line">    &#x2F;&#x2F; 创建一个格式化方式</span><br><span class="line">    DateTimeFormatter df &#x3D; DateTimeFormatter.ofPattern(&quot;yyyy年MM月dd&quot;);</span><br><span class="line">    &#x2F;&#x2F; 执行时间的格式化处理，得到期望格式的时间字符串</span><br><span class="line">    String timeStr &#x3D; df.format(time);</span><br><span class="line">    &#x2F;&#x2F; 打印时间</span><br><span class="line">    System.out.println(timeStr);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>3：获取年份、月份、日、星期几</p>

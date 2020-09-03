@@ -79,13 +79,15 @@
 
 
 
+<meta name="description" content="3File对象的其他方法：1 public String getName()返回由此抽象路径名表示的文件或目录的名称。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="note9">
 <meta property="og:url" content="http://yoursite.com/2020/07/14/note9/index.html">
 <meta property="og:site_name" content="咕噜咕噜咕噜">
+<meta property="og:description" content="3File对象的其他方法：1 public String getName()返回由此抽象路径名表示的文件或目录的名称。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-14T08:24:40.000Z">
-<meta property="article:modified_time" content="2020-09-03T08:26:09.507Z">
+<meta property="article:modified_time" content="2020-09-03T08:37:48.431Z">
 <meta property="article:author" content="沈高昂">
 <meta name="twitter:card" content="summary">
 
@@ -351,7 +353,10 @@
       
 
       
-        
+        <h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>File对象的其他方法：<br>1 public String getName()<br>返回由此抽象路径名表示的文件或目录的名称。</p>
+<a id="more"></a>
+<p>2 public String getParent()、<br>返回此抽象路径名的父路径名的路径名字符串，如果此路径名没有指定<br>父目录，则返回 null。<br>3 public File getParentFile()<br>返回此抽象路径名的父路径名的抽象路径名，如果此路径名没有指定父<br>目录，则返回 null。<br>4 public String getPath()<br>将此抽象路径名转换为一个路径名字符串。<br>5 public boolean isAbsolute()<br>测试此抽象路径名是否为绝对路径名。<br>6 public String getAbsolutePath()<br>返回抽象路径名的绝对路径名字符串。<br>7 public boolean canRead()<br>测试应用程序是否可以读取此抽象路径名表示的文件。<br>8 public boolean canWrite()<br>测试应用程序是否可以修改此抽象路径名表示的文件。<br>9 public boolean exists()<br>测试此抽象路径名表示的文件或目录是否存在。<br>10 public boolean isDirectory()<br>测试此抽象路径名表示的文件是否是一个目录。<br>11 public boolean isFile()<br>测试此抽象路径名表示的文件是否是一个标准文件。<br>12 public long lastModified()<br>返回此抽象路径名表示的文件最后一次被修改的时间。<br>13 public long length()<br>返回由此抽象路径名表示的文件的长度。<br>14 public boolean createNewFile() throws IOException<br>当且仅当不存在具有此抽象路径名指定的名称的文件时，原子地创建由<br>此抽象路径名指定的一个新的空文件。<br>15 public boolean delete()<br>删除此抽象路径名表示的文件或目录。<br>16 public void deleteOnExit()<br>在虚拟机终止时，请求删除此抽象路径名表示的文件或目录。<br>17 public String[] list()<br>返回由此抽象路径名所表示的目录中的文件和目录的名称所组成字符串<br>数组。<br>18 public String[] list(FilenameFilter filter)<br>返回由包含在目录中的文件和目录的名称所组成的字符串数组，这一目<br>录是通过满足指定过滤器的抽象路径名来表示的。<br>19 public File[] listFiles()<br>返回一个抽象路径名数组，这些路径名表示此抽象路径名所表示目录中<br>的文件。<br>20 public File[] listFiles(FileFilter filter)<br>返回表示此抽象路径名所表示目录中的文件和目录的抽象路径名数组，<br>这些路径名满足特定过滤器。<br>21 public boolean mkdir()<br>创建此抽象路径名指定的目录。<br>22 public boolean mkdirs()<br>创建此抽象路径名指定的目录，包括创建必需但不存在的父目录。<br>23 public boolean renameTo(File dest)<br>重新命名此抽象路径名表示的文件。<br>24 public boolean setLastModified(long time)<br>设置由此抽象路径名所指定的文件或目录的最后一次修改时间。<br>25 public boolean setReadOnly()<br>标记此抽象路径名指定的文件或目录，以便只可对其进行读操作。<br>26 public static File createTempFile(String prefix, String suffix,<br>File directory) throws IOException<br>在指定目录中创建一个新的空文件，使用给定的前缀和后缀字符串生成<br>其名称。<br>27 public static File createTempFile(String prefix, String suffix)<br>throws IOException<br>在默认临时文件目录中创建一个空文件，使用给定前缀和后缀生成其名<br>称。<br>28 public int compareTo(File pathname)<br>按字母顺序比较两个抽象路径名。<br>29 public int compareTo(Object o)<br>按字母顺序比较抽象路径名与给定对象。<br>30 public boolean equals(Object obj)<br>测试此抽象路径名与给定对象是否相等。<br>31 public String toString()<br>返回此抽象路径名的路径名字符串。</p>
+
       
     </div>
     
@@ -439,8 +444,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -504,6 +518,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">1.</span> <span class="nav-text">3</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
