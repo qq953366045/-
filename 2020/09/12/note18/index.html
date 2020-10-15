@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="8-1：查询城市代号在天气官网 http:&#x2F;&#x2F;www.weather.com.cn&#x2F; 输入想要查询的城市，然后链接地址中的数字就是城市代号了。 8-2：查询城市天气调用API查询： 中国天气官网查询实时天气的API为： http:&#x2F;&#x2F;www.weather.com.cn&#x2F;data&#x2F;sk&#x2F;101210106.html数字是城市的代码。 123456789101112131415161718&amp;#x2F">
+<meta name="description" content="8-1：查询城市代号在天气官网 http:&#x2F;&#x2F;www.weather.com.cn&#x2F; 输入想要查询的城市，然后链接地址中的数字就是城市代号了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="note12">
 <meta property="og:url" content="http://yoursite.com/2020/09/12/note18/index.html">
 <meta property="og:site_name" content="咕噜咕噜咕噜">
-<meta property="og:description" content="8-1：查询城市代号在天气官网 http:&#x2F;&#x2F;www.weather.com.cn&#x2F; 输入想要查询的城市，然后链接地址中的数字就是城市代号了。 8-2：查询城市天气调用API查询： 中国天气官网查询实时天气的API为： http:&#x2F;&#x2F;www.weather.com.cn&#x2F;data&#x2F;sk&#x2F;101210106.html数字是城市的代码。 123456789101112131415161718&amp;#x2F">
+<meta property="og:description" content="8-1：查询城市代号在天气官网 http:&#x2F;&#x2F;www.weather.com.cn&#x2F; 输入想要查询的城市，然后链接地址中的数字就是城市代号了。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-12T10:33:23.000Z">
-<meta property="article:modified_time" content="2020-10-15T07:15:58.664Z">
+<meta property="article:modified_time" content="2020-10-15T07:22:08.899Z">
 <meta property="article:author" content="沈高昂">
 <meta name="twitter:card" content="summary">
 
@@ -344,6 +344,7 @@
 
       
         <h2 id="8-1：查询城市代号"><a href="#8-1：查询城市代号" class="headerlink" title="8-1：查询城市代号"></a>8-1：查询城市代号</h2><p>在天气官网 <a href="http://www.weather.com.cn/" target="_blank" rel="noopener">http://www.weather.com.cn/</a> 输入想要查询的城市，然后链接地址中的数字就是城市代号了。</p>
+<a id="more"></a>
 <h2 id="8-2：查询城市天气"><a href="#8-2：查询城市天气" class="headerlink" title="8-2：查询城市天气"></a>8-2：查询城市天气</h2><p>调用API查询： 中国天气官网查询实时天气的API为： <a href="http://www.weather.com.cn/data/sk/101210106.html" target="_blank" rel="noopener">http://www.weather.com.cn/data/sk/101210106.html</a><br>数字是城市的代码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 天气详情模型</span><br><span class="line">*&#x2F;</span><br><span class="line">public class WeatherInfo &#123;</span><br><span class="line">  private String city;</span><br><span class="line">  private String cityid;</span><br><span class="line">  private String temp;</span><br><span class="line">  private String WD;</span><br><span class="line">  private String WS;</span><br><span class="line">  private String SD;</span><br><span class="line">  private String AP;</span><br><span class="line">  private String njd;</span><br><span class="line">  private String WSE;</span><br><span class="line">  private String time;</span><br><span class="line">  private String sm;</span><br><span class="line">  private String isRadar;</span><br><span class="line">  private String Radar;</span><br><span class="line">    加上一系列的getter和setter</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 天气模型</span><br><span class="line">*&#x2F;</span><br><span class="line">public class Weather &#123;</span><br><span class="line">    &#x2F;&#x2F; 天气详情</span><br><span class="line">    private WeatherInfo weatherinfo;</span><br><span class="line">    public WeatherInfo getWeatherinfo() &#123;</span><br><span class="line">      return weatherinfo;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setWeatherinfo(WeatherInfo weatherinfo) &#123;</span><br><span class="line">      this.weatherinfo &#x3D; weatherinfo;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>

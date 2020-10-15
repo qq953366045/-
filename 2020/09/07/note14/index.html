@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="4-1：User-AgentHTTP header：HTTP消息头Headers是HTTP协议的一项重要内容，作用是在发起请求的时候，除了请求参数外，可以附加更多的息。   这里只要记住，Headers信息并不是写在URL中的，属于隐藏的数据，不能直观看到。###User-Agent：User-Agent是存放在Headers中的一种数据信息。作用是，在指定URL发送请求的时候，告诉服务端当前用户">
+<meta name="description" content="4-1：User-AgentHTTP header：HTTP消息头Headers是HTTP协议的一项重要内容，作用是在发起请求的时候，除了请求参数外，可以附加更多的息。   这里只要记住，Headers信息并不是写在URL中的，属于隐藏的数据，不能直观看到。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="note14">
 <meta property="og:url" content="http://yoursite.com/2020/09/07/note14/index.html">
 <meta property="og:site_name" content="咕噜咕噜咕噜">
-<meta property="og:description" content="4-1：User-AgentHTTP header：HTTP消息头Headers是HTTP协议的一项重要内容，作用是在发起请求的时候，除了请求参数外，可以附加更多的息。   这里只要记住，Headers信息并不是写在URL中的，属于隐藏的数据，不能直观看到。###User-Agent：User-Agent是存放在Headers中的一种数据信息。作用是，在指定URL发送请求的时候，告诉服务端当前用户">
+<meta property="og:description" content="4-1：User-AgentHTTP header：HTTP消息头Headers是HTTP协议的一项重要内容，作用是在发起请求的时候，除了请求参数外，可以附加更多的息。   这里只要记住，Headers信息并不是写在URL中的，属于隐藏的数据，不能直观看到。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-07T09:20:32.000Z">
-<meta property="article:modified_time" content="2020-10-15T07:18:24.421Z">
+<meta property="article:modified_time" content="2020-10-15T07:21:42.431Z">
 <meta property="article:author" content="沈高昂">
 <meta name="twitter:card" content="summary">
 
@@ -343,7 +343,9 @@
       
 
       
-        <h2 id="4-1：User-Agent"><a href="#4-1：User-Agent" class="headerlink" title="4-1：User-Agent"></a>4-1：User-Agent</h2><p><strong>HTTP header：</strong><br>HTTP消息头Headers是HTTP协议的一项重要内容，作用是在发起请求的时候，除了请求参数外，可以附加更多的息。   这里只要记住，Headers信息并不是写在URL中的，属于隐藏的数据，不能直观看到。<br>###User-Agent：<br><strong>User-Agent</strong>是存放在Headers中的一种数据信息。作用是，在指定URL发送请求的时候，告诉服务端当前用户的浏览器类型、版本，甚至操作系统、CPU等非隐私的技术信息。<br>服务器从Headers中的User-Agent信息获取到浏览器类型、版本等数据后，就认为是一个浏览器请求的环境了，就会给出响应。所以，我们只要在程序代码中，附加上User-Agent信息， 就能允许成功了。当然，这里的User-Agent是模拟的。我们来模拟一个win7+chrome的环境，User-Agent的写法如下：</p>
+        <h2 id="4-1：User-Agent"><a href="#4-1：User-Agent" class="headerlink" title="4-1：User-Agent"></a>4-1：User-Agent</h2><p><strong>HTTP header：</strong><br>HTTP消息头Headers是HTTP协议的一项重要内容，作用是在发起请求的时候，除了请求参数外，可以附加更多的息。   这里只要记住，Headers信息并不是写在URL中的，属于隐藏的数据，不能直观看到。</p>
+<a id="more"></a>
+<p>###User-Agent：<br><strong>User-Agent</strong>是存放在Headers中的一种数据信息。作用是，在指定URL发送请求的时候，告诉服务端当前用户的浏览器类型、版本，甚至操作系统、CPU等非隐私的技术信息。<br>服务器从Headers中的User-Agent信息获取到浏览器类型、版本等数据后，就认为是一个浏览器请求的环境了，就会给出响应。所以，我们只要在程序代码中，附加上User-Agent信息， 就能允许成功了。当然，这里的User-Agent是模拟的。我们来模拟一个win7+chrome的环境，User-Agent的写法如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mozilla&#x2F;5.0 (Windows NT 6.1; WOW64) AppleWebKit&#x2F;535.1 (KHTML, like Gecko) Chrome&#x2F;14.0.835.163 Safari&#x2F;535.1</span><br></pre></td></tr></table></figure>
 <p>学以致用：<br>模拟了一个User-Agent，程序中怎么用呢？实际上Okhttp3库已经支持Headers了，只需要在构建Request对象的时候，调用addHeader() 2方法即可： </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Request request &#x3D; new Request.Builder()</span><br><span class="line">    .url(url)</span><br><span class="line">    .addHeader(&quot;User-Agent&quot;, &quot;&quot;)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>

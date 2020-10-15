@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="##5-1：下载文件在Java中写文件必须经历3个步骤： 12345创建文件对象   ↓写入内容   ↓关闭写入操作 打开和关闭的步骤，是为了确保同一个文件同时只能被一个程序写，否则内容会错乱写入文本文件在程序中写入字符串内容的语句： 12345678910111213141516171819202122232425262728import java.io.File;import java.io.">
+<meta name="description" content="##5-1：下载文件在Java中写文件必须经历3个步骤： 12345创建文件对象   ↓写入内容   ↓关闭写入操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="note15">
 <meta property="og:url" content="http://yoursite.com/2020/09/08/note15/index.html">
 <meta property="og:site_name" content="咕噜咕噜咕噜">
-<meta property="og:description" content="##5-1：下载文件在Java中写文件必须经历3个步骤： 12345创建文件对象   ↓写入内容   ↓关闭写入操作 打开和关闭的步骤，是为了确保同一个文件同时只能被一个程序写，否则内容会错乱写入文本文件在程序中写入字符串内容的语句： 12345678910111213141516171819202122232425262728import java.io.File;import java.io.">
+<meta property="og:description" content="##5-1：下载文件在Java中写文件必须经历3个步骤： 12345创建文件对象   ↓写入内容   ↓关闭写入操作">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-08T10:12:22.000Z">
-<meta property="article:modified_time" content="2020-10-15T07:18:00.477Z">
+<meta property="article:modified_time" content="2020-10-15T07:21:48.302Z">
 <meta property="article:author" content="沈高昂">
 <meta name="twitter:card" content="summary">
 
@@ -345,6 +345,7 @@
       
         <p>##5-1：下载文件<br>在Java中写文件必须经历3个步骤：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">创建文件对象</span><br><span class="line">   ↓</span><br><span class="line">写入内容</span><br><span class="line">   ↓</span><br><span class="line">关闭写入操作</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>打开和关闭的步骤，是为了确保同一个文件同时只能被一个程序写，否则内容会错乱<br><strong>写入文本文件</strong><br>在程序中写入字符串内容的语句：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileWriter;</span><br><span class="line">&#x2F;&#x2F; 文件对象</span><br><span class="line">File file &#x3D; new File(&quot;foo.txt&quot;);</span><br><span class="line">&#x2F;&#x2F; 写入内容</span><br><span class="line">FileWriter fileWritter &#x3D; new FileWriter(file.getName());</span><br><span class="line">fileWritter.write(content);</span><br><span class="line">&#x2F;&#x2F; 关闭</span><br><span class="line">fileWritter.close();</span><br><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileWriter;</span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">public class FileTest &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      String content &#x3D; &quot;Hello World&quot;;</span><br><span class="line">      File file &#x3D; new File(&quot;foo.txt&quot;);  </span><br><span class="line">      FileWriter fileWritter &#x3D; new FileWriter(file.getName());  </span><br><span class="line">      fileWritter.write(content);  </span><br><span class="line">      fileWritter.close();  </span><br><span class="line">      System.out.println(&quot;finish&quot;);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>会生成一个foo.txt的文件，里面的内容就是Hello World<br><strong>写入二进制文件：</strong><br>假如文件数据的变量是byte[] data，那么写入本地文件的代码如下</p>
