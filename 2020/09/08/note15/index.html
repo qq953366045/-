@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="##5-1：下载文件在Java中写文件必须经历3个步骤： 12345创建文件对象   ↓写入内容   ↓关闭写入操作 打开和关闭的步骤，是为了确保同一个文件同时只能被一个程序写，否则内容会错乱写入文本文件在程序中写入字符串内容的语句： 12345678910111213141516171819202122232425262728import java.io.File;import java.io.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="note15">
+<meta property="og:url" content="http://yoursite.com/2020/09/08/note15/index.html">
+<meta property="og:site_name" content="咕噜咕噜咕噜">
+<meta property="og:description" content="##5-1：下载文件在Java中写文件必须经历3个步骤： 12345创建文件对象   ↓写入内容   ↓关闭写入操作 打开和关闭的步骤，是为了确保同一个文件同时只能被一个程序写，否则内容会错乱写入文本文件在程序中写入字符串内容的语句： 12345678910111213141516171819202122232425262728import java.io.File;import java.io.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-08T10:12:22.000Z">
+<meta property="article:modified_time" content="2020-10-15T07:18:00.477Z">
+<meta property="article:author" content="沈高昂">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/09/08/note15/"/>
+
+
+
+
+
+  <title>note15 | 咕噜咕噜咕噜</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">咕噜咕噜咕噜</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/08/note15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="沈高昂">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="咕噜咕噜咕噜">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">note15</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-08T18:12:22+08:00">
+                2020-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">Java网络编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##5-1：下载文件<br>在Java中写文件必须经历3个步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">创建文件对象</span><br><span class="line">   ↓</span><br><span class="line">写入内容</span><br><span class="line">   ↓</span><br><span class="line">关闭写入操作</span><br></pre></td></tr></table></figure>
+<p>打开和关闭的步骤，是为了确保同一个文件同时只能被一个程序写，否则内容会错乱<br><strong>写入文本文件</strong><br>在程序中写入字符串内容的语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileWriter;</span><br><span class="line">&#x2F;&#x2F; 文件对象</span><br><span class="line">File file &#x3D; new File(&quot;foo.txt&quot;);</span><br><span class="line">&#x2F;&#x2F; 写入内容</span><br><span class="line">FileWriter fileWritter &#x3D; new FileWriter(file.getName());</span><br><span class="line">fileWritter.write(content);</span><br><span class="line">&#x2F;&#x2F; 关闭</span><br><span class="line">fileWritter.close();</span><br><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileWriter;</span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">public class FileTest &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      String content &#x3D; &quot;Hello World&quot;;</span><br><span class="line">      File file &#x3D; new File(&quot;foo.txt&quot;);  </span><br><span class="line">      FileWriter fileWritter &#x3D; new FileWriter(file.getName());  </span><br><span class="line">      fileWritter.write(content);  </span><br><span class="line">      fileWritter.close();  </span><br><span class="line">      System.out.println(&quot;finish&quot;);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会生成一个foo.txt的文件，里面的内容就是Hello World<br><strong>写入二进制文件：</strong><br>假如文件数据的变量是byte[] data，那么写入本地文件的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">&#x2F;&#x2F; 文件对象</span><br><span class="line">File file &#x3D; new File(&quot;china-city-list.xlsx&quot;);</span><br><span class="line">&#x2F;&#x2F; 写文件</span><br><span class="line">FileOutputStream fos &#x3D; new FileOutputStream(file);</span><br><span class="line">fos.write(data);</span><br><span class="line">&#x2F;&#x2F; 必须刷新并关闭</span><br><span class="line">fos.flush();</span><br><span class="line">fos.close();</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.Response;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line"></span><br><span class="line">public class ExcelAsker &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public byte[] getFile(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder().url(url).build();</span><br><span class="line">    byte[] bytes &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 执行请求</span><br><span class="line">      Response response &#x3D; okHttpClient.newCall(request).execute();</span><br><span class="line">      bytes &#x3D; response.body().bytes();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return bytes;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;style.youkeda.com&#x2F;img&#x2F;ham&#x2F;course&#x2F;py2&#x2F;china-city-list.xlsx&quot;;</span><br><span class="line">    ExcelAsker asker &#x3D; new ExcelAsker();</span><br><span class="line">    byte[] data &#x3D; asker.getFile(url);</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 文件对象</span><br><span class="line">      File file &#x3D; new File(&quot;china-city-list.xlsx&quot;);  </span><br><span class="line">      &#x2F;&#x2F; 写文件</span><br><span class="line">      FileOutputStream fos &#x3D; new FileOutputStream(file);  </span><br><span class="line">      fos.write(data);  </span><br><span class="line">      &#x2F;&#x2F; 必须刷新并关闭</span><br><span class="line">      fos.flush();  </span><br><span class="line">      fos.close();  </span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-2：下载图片"><a href="#5-2：下载图片" class="headerlink" title="5-2：下载图片"></a>5-2：下载图片</h2><p>图片都是二进制文件，只需要写入二进制文件就行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.Response;</span><br><span class="line"></span><br><span class="line">public class ImageAsker &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public byte[] getImage(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder().url(url).build();</span><br><span class="line">    byte[] bytes &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 执行请求</span><br><span class="line">      Response response &#x3D; okHttpClient.newCall(request).execute();</span><br><span class="line">      bytes &#x3D; response.body().bytes();</span><br><span class="line">      System.out.println(&quot;图片大小为： &quot; + bytes.length + &quot; 字节&quot;);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return bytes;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;n.sinaimg.cn&#x2F;news&#x2F;1_img&#x2F;dfic&#x2F;72f96829&#x2F;125&#x2F;w1024h701&#x2F;20191209&#x2F;e270-iknhexh8551480.jpg&quot;;</span><br><span class="line">    ImageAsker asker &#x3D; new ImageAsker();</span><br><span class="line">    byte[] data &#x3D; asker.getImage(url);</span><br><span class="line">    try &#123;</span><br><span class="line">      File file &#x3D; new File(&quot;e270-iknhexh8551480.jpg&quot;);</span><br><span class="line">      FileOutputStream fos &#x3D; new FileOutputStream(file);</span><br><span class="line">      fos.write(data);</span><br><span class="line">      fos.flush();</span><br><span class="line">      fos.close();</span><br><span class="line">      System.out.println(&quot;下载成功&quot;);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下载成功</p>
+<h2 id="5-3：解析excel"><a href="#5-3：解析excel" class="headerlink" title="5-3：解析excel"></a>5-3：解析excel</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import com.alibaba.excel.EasyExcel;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 读取第一个sheet</span><br><span class="line">List&lt;Map&lt;Integer, String&gt;&gt; sheetDatas &#x3D; EasyExcel.read(&quot;xzq_201907.xlsx&quot;).sheet(0).doReadSync();</span><br><span class="line">&#x2F;&#x2F; List 中每个元素表示一行for (Map&lt;Integer, String&gt; rowData : sheetDatas) &#123;</span><br><span class="line">  &#x2F;&#x2F; Map 中用序号指代每一列</span><br><span class="line">  for (Integer index : rowData.keySet()) &#123;</span><br><span class="line">    &#x2F;&#x2F; 列值</span><br><span class="line">    String columnValue &#x3D; rowData.get(index);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">import com.alibaba.excel.EasyExcel;</span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.Response;</span><br><span class="line">public class ExcelAsker &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public byte[] getFile(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder().url(url).build();</span><br><span class="line">    byte[] bytes &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 执行请求</span><br><span class="line">      Response response &#x3D; okHttpClient.newCall(request).execute();</span><br><span class="line">      bytes &#x3D; response.body().bytes();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return bytes;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;style.youkeda.com&#x2F;img&#x2F;ham&#x2F;course&#x2F;py2&#x2F;xzq_201907.xlsx&quot;;</span><br><span class="line">    ExcelAsker asker &#x3D; new ExcelAsker();</span><br><span class="line">    byte[] data &#x3D; asker.getFile(url);</span><br><span class="line">    try &#123;</span><br><span class="line">      File file &#x3D; new File(&quot;xzq_201907.xlsx&quot;);</span><br><span class="line">      FileOutputStream fos &#x3D; new FileOutputStream(file);</span><br><span class="line">      fos.write(data);</span><br><span class="line">      fos.flush();</span><br><span class="line">      fos.close();</span><br><span class="line">      System.out.println(&quot;下载成功&quot;);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Map&lt;Integer, String&gt;&gt; sheetDatas &#x3D; EasyExcel.read(&quot;xzq_201907.xlsx&quot;).sheet(0).doReadSync();</span><br><span class="line">    for (Map&lt;Integer, String&gt; rowData : sheetDatas) &#123;</span><br><span class="line">      for (Integer index : rowData.keySet()) &#123;</span><br><span class="line">        System.out.print(&quot;列号：&quot; + index + &quot;，列值：&quot; + rowData.get(index) + &quot;。&quot;);    </span><br><span class="line">      &#125;  </span><br><span class="line">      System.out.println(&quot;&quot;);  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>pom.xml里要多加一个库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- excel 操作库 --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;easyexcel&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.1.6&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>自动转换为类：</strong><br>在不能提前确定 文件每一列的含义时，或者复杂场景 下 文件的列经常变化，用 表示每一列的数据比 较好。 excel excel Map 但是如果知道 文件每一列的含义，用自定义类来表 示，会更加直观。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import com.alibaba.excel.EasyExcel;</span><br><span class="line">import java.util.List;</span><br><span class="line">&#x2F;&#x2F; 读取第一个sheet</span><br><span class="line">List&lt;DemoData&gt; sheetDatas &#x3D; EasyExcel.read(&quot;xzq_201907.xlsx&quot;).head(DemoData.class).sheet(0).doReadSync();</span><br></pre></td></tr></table></figure>
+<p>注意这里多调用了一个方法：.head(DemoData.calss) ，DemoData 就是自定义的类，表示一行数据，类的每个属性都表示一列的值。</p>
+<p>Map 更灵活，自定义类更直观易理解。一般列数不太多 （不超过 10 个）、不会变化，用自定义类<br>返回值为List<DemoData>就表示把每一行都转换为一个DemoData的实例对象，放入List集合中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 属性定义的顺序必须与列顺序保持一致public class DemoData &#123;</span><br><span class="line">  private String code1;</span><br><span class="line">  private String city1;</span><br><span class="line">  private String code2;</span><br><span class="line">  private String city2;</span><br><span class="line">  private String code3;</span><br><span class="line">  private String city3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>code1 是第一个属性，映射 excel 文件第一列的值。这是为 了让大家易懂，在属性名上加了数字，实际上，即使属性名 是 code10000 ，只要放在最前面，就映射第一列的值。 </p>
+<p><strong>注意 excel 表的列与自定义类的属性，是按顺序一一对应的，不是按名称哦。</strong><br>看一下代码演示，解析此文件的过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public class DemoData &#123;</span><br><span class="line">  private String code1;</span><br><span class="line">  private String city1;</span><br><span class="line">  private String code2;</span><br><span class="line">  private String city2;</span><br><span class="line">  private String code3;</span><br><span class="line">  private String city3;</span><br><span class="line">  public String getCode1() &#123;</span><br><span class="line">    return code1;</span><br><span class="line">  &#125;</span><br><span class="line">  public void setCode1(String code1) &#123;</span><br><span class="line">    this.code1 &#x3D; code1;</span><br><span class="line">  &#125;</span><br><span class="line">  public String getCity1() &#123;</span><br><span class="line">    return city1;</span><br><span class="line">  &#125;</span><br><span class="line">  public void setCity1(String city1) &#123;</span><br><span class="line">    this.city1 &#x3D; city1;</span><br><span class="line">  &#125;</span><br><span class="line">  public String getCode2() &#123;</span><br><span class="line">    return code2;</span><br><span class="line">  &#125;</span><br><span class="line">  public void setCode2(String code2) &#123;</span><br><span class="line">    this.code2 &#x3D; code2;</span><br><span class="line">  &#125;</span><br><span class="line">  public String getCity2() &#123;</span><br><span class="line">    return city2;</span><br><span class="line">  &#125;</span><br><span class="line">  public void setCity2(String city2) &#123;</span><br><span class="line">    this.city2 &#x3D; city2;</span><br><span class="line">  &#125;</span><br><span class="line">  public String getCode3() &#123;</span><br><span class="line">    return code3;</span><br><span class="line">  &#125;</span><br><span class="line">  public void setCode3(String code3) &#123;</span><br><span class="line">    this.code3 &#x3D; code3;</span><br><span class="line">  &#125;</span><br><span class="line">  public String getCity3() &#123;</span><br><span class="line">    return city3;</span><br><span class="line">  &#125;</span><br><span class="line">  public void setCity3(String city3) &#123;</span><br><span class="line">    this.city3 &#x3D; city3;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import com.alibaba.excel.EasyExcel;</span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.Response;</span><br><span class="line">public class ExcelAsker &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public byte[] getFile(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder().url(url).build();</span><br><span class="line">    byte[] bytes &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 执行请求</span><br><span class="line">      Response response &#x3D; okHttpClient.newCall(request).execute();</span><br><span class="line">      bytes &#x3D; response.body().bytes();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return bytes;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;style.youkeda.com&#x2F;img&#x2F;ham&#x2F;course&#x2F;py2&#x2F;xzq_201907.xlsx&quot;;</span><br><span class="line">    ExcelAsker asker &#x3D; new ExcelAsker();</span><br><span class="line">    byte[] data &#x3D; asker.getFile(url);</span><br><span class="line">    try &#123;</span><br><span class="line">      File file &#x3D; new File(&quot;xzq_201907.xlsx&quot;);</span><br><span class="line">      FileOutputStream fos &#x3D; new FileOutputStream(file);</span><br><span class="line">      fos.write(data);</span><br><span class="line">      fos.flush();</span><br><span class="line">      fos.close();</span><br><span class="line">      System.out.println(&quot;下载成功&quot;);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;DemoData&gt; sheetDatas &#x3D; EasyExcel.read(&quot;xzq_201907.xlsx&quot;).head(DemoData.class).sheet(0).doReadSync();</span><br><span class="line">    for (DemoData rowData : sheetDatas) &#123;</span><br><span class="line">      System.out.println(JSON.toJSONString(rowData));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总结 无论转换为自定义的类还是Map， EasyExcel.XXXXXX.doReadSync()<br>最终返回的都是一个集合List。大家一定要理解的是，集合中的每一个元素，即每一个实例对象（无论是自定义类还是 Map），都表示一行数据。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/07/note14/" rel="next" title="note14">
+                <i class="fa fa-chevron-left"></i> note14
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/09/note16/" rel="prev" title="note16">
+                note16 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/1.jpg"
+                alt="沈高昂" />
+            
+              <p class="site-author-name" itemprop="name">沈高昂</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2：下载图片"><span class="nav-number">1.</span> <span class="nav-text">5-2：下载图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3：解析excel"><span class="nav-number">2.</span> <span class="nav-text">5-3：解析excel</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沈高昂</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>

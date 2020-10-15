@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="8-1：查询城市代号在天气官网 http:&#x2F;&#x2F;www.weather.com.cn&#x2F; 输入想要查询的城市，然后链接地址中的数字就是城市代号了。 8-2：查询城市天气调用API查询： 中国天气官网查询实时天气的API为： http:&#x2F;&#x2F;www.weather.com.cn&#x2F;data&#x2F;sk&#x2F;101210106.html数字是城市的代码。 123456789101112131415161718&amp;#x2F">
+<meta property="og:type" content="article">
+<meta property="og:title" content="note12">
+<meta property="og:url" content="http://yoursite.com/2020/09/12/note18/index.html">
+<meta property="og:site_name" content="咕噜咕噜咕噜">
+<meta property="og:description" content="8-1：查询城市代号在天气官网 http:&#x2F;&#x2F;www.weather.com.cn&#x2F; 输入想要查询的城市，然后链接地址中的数字就是城市代号了。 8-2：查询城市天气调用API查询： 中国天气官网查询实时天气的API为： http:&#x2F;&#x2F;www.weather.com.cn&#x2F;data&#x2F;sk&#x2F;101210106.html数字是城市的代码。 123456789101112131415161718&amp;#x2F">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-12T10:33:23.000Z">
+<meta property="article:modified_time" content="2020-10-15T07:15:58.664Z">
+<meta property="article:author" content="沈高昂">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/09/12/note18/"/>
+
+
+
+
+
+  <title>note12 | 咕噜咕噜咕噜</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">咕噜咕噜咕噜</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/12/note18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="沈高昂">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="咕噜咕噜咕噜">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">note12</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-12T18:33:23+08:00">
+                2020-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">Java网络编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="8-1：查询城市代号"><a href="#8-1：查询城市代号" class="headerlink" title="8-1：查询城市代号"></a>8-1：查询城市代号</h2><p>在天气官网 <a href="http://www.weather.com.cn/" target="_blank" rel="noopener">http://www.weather.com.cn/</a> 输入想要查询的城市，然后链接地址中的数字就是城市代号了。</p>
+<h2 id="8-2：查询城市天气"><a href="#8-2：查询城市天气" class="headerlink" title="8-2：查询城市天气"></a>8-2：查询城市天气</h2><p>调用API查询： 中国天气官网查询实时天气的API为： <a href="http://www.weather.com.cn/data/sk/101210106.html" target="_blank" rel="noopener">http://www.weather.com.cn/data/sk/101210106.html</a><br>数字是城市的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 天气详情模型</span><br><span class="line">*&#x2F;</span><br><span class="line">public class WeatherInfo &#123;</span><br><span class="line">  private String city;</span><br><span class="line">  private String cityid;</span><br><span class="line">  private String temp;</span><br><span class="line">  private String WD;</span><br><span class="line">  private String WS;</span><br><span class="line">  private String SD;</span><br><span class="line">  private String AP;</span><br><span class="line">  private String njd;</span><br><span class="line">  private String WSE;</span><br><span class="line">  private String time;</span><br><span class="line">  private String sm;</span><br><span class="line">  private String isRadar;</span><br><span class="line">  private String Radar;</span><br><span class="line">    加上一系列的getter和setter</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 天气模型</span><br><span class="line">*&#x2F;</span><br><span class="line">public class Weather &#123;</span><br><span class="line">    &#x2F;&#x2F; 天气详情</span><br><span class="line">    private WeatherInfo weatherinfo;</span><br><span class="line">    public WeatherInfo getWeatherinfo() &#123;</span><br><span class="line">      return weatherinfo;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setWeatherinfo(WeatherInfo weatherinfo) &#123;</span><br><span class="line">      this.weatherinfo &#x3D; weatherinfo;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import com.youkeda.test.j3.c9.model.Weather;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import org.apache.commons.lang3.StringUtils;</span><br><span class="line">public class PageOperator &#123;</span><br><span class="line">  &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">  private OkHttpClient okHttpClient;</span><br><span class="line">  public PageOperator() &#123;</span><br><span class="line">    &#x2F;&#x2F;1. 构建 okHttpClient 实例</span><br><span class="line">    okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public String getPageContentSync(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; 参数判断，未输入参数则直接返回</span><br><span class="line">    if (StringUtils.isBlank(url)) &#123;</span><br><span class="line">      return null;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;2.定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder().url(url).build();</span><br><span class="line">    &#x2F;&#x2F;3.使用client去请求</span><br><span class="line">    Call call &#x3D; okHttpClient.newCall(request);</span><br><span class="line">    String result &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F;4.获得返回结果</span><br><span class="line">      result &#x3D; call.execute().body().string();</span><br><span class="line">      System.out.println(&quot;call &quot; + url + &quot; , content&#39;s size&#x3D;&quot; + result.length());</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    PageOperator po &#x3D; new PageOperator();</span><br><span class="line">    String content &#x3D; po.getPageContentSync(&quot;http:&#x2F;&#x2F;www.weather.com.cn&#x2F;data&#x2F;sk&#x2F;101040200.html&quot;);</span><br><span class="line">    Weather weather &#x3D; JSON.parseObject(content, Weather.class); &#x2F;&#x2F;天气API查询的结果反序列化</span><br><span class="line">    System.out.println(&quot;city&#x3D;&quot; + weather.getWeatherinfo().getCity());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>pom.xml:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot;</span><br><span class="line">         xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0 http:&#x2F;&#x2F;maven.apache.org&#x2F;xsd&#x2F;maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;&#x2F;modelVersion&gt;</span><br><span class="line">    &lt;groupId&gt;com.youkeda.course&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;app&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0-SNAPSHOT&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;&#x2F;project.reporting.outputEncoding&gt;</span><br><span class="line">        &lt;java.version&gt;1.8&lt;&#x2F;java.version&gt;</span><br><span class="line">        &lt;resource.delimiter&gt;@&lt;&#x2F;resource.delimiter&gt;</span><br><span class="line">        &lt;maven.compiler.source&gt;$&#123;java.version&#125;&lt;&#x2F;maven.compiler.source&gt;</span><br><span class="line">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;&#x2F;project.build.sourceEncoding&gt;</span><br><span class="line">        &lt;maven.compiler.target&gt;$&#123;java.version&#125;&lt;&#x2F;maven.compiler.target&gt;</span><br><span class="line">    &lt;&#x2F;properties&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;com.squareup.okhttp3&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;okhttp&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;4.1.0&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;javax.mail&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mail&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.4&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;fastjson&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.2.62&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.commons&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;commons-lang3&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;3.9&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;&#x2F;dependencies&gt;</span><br><span class="line">&lt;&#x2F;project&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="8-3：天气通过邮件发送（Weather-java与Weatherinfo和上面一样）"><a href="#8-3：天气通过邮件发送（Weather-java与Weatherinfo和上面一样）" class="headerlink" title="8-3：天气通过邮件发送（Weather.java与Weatherinfo和上面一样）"></a>8-3：天气通过邮件发送（Weather.java与Weatherinfo和上面一样）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">import com.sun.net.ssl.internal.ssl.Provider;</span><br><span class="line">import java.security.Security;</span><br><span class="line">import java.util.Properties;</span><br><span class="line">import javax.mail.Authenticator;</span><br><span class="line">import javax.mail.Message;</span><br><span class="line">import javax.mail.PasswordAuthentication;</span><br><span class="line">import javax.mail.Session;</span><br><span class="line">import javax.mail.Transport;</span><br><span class="line">import javax.mail.internet.InternetAddress;</span><br><span class="line">import javax.mail.internet.MimeMessage;</span><br><span class="line">public class Mail &#123;</span><br><span class="line">  private static final String SSL_FACTORY &#x3D; &quot;javax.net.ssl.SSLSocketFactory&quot;;</span><br><span class="line">  private static Properties props &#x3D; null;</span><br><span class="line">  &#x2F;&#x2F; TODO:发件人信箱</span><br><span class="line">  private static final String FROM_MAIL &#x3D; &quot;953366045@qq.com&quot;;</span><br><span class="line">  &#x2F;&#x2F; TODO:发件人信箱安全key</span><br><span class="line">  private static final String FROM_MAIL_KEY &#x3D; &quot;uyjhycuqblqibcca&quot;;</span><br><span class="line">  &#x2F;&#x2F; TODO:收件人信箱</span><br><span class="line">  private static final String TO_MAIL &#x3D; &quot;953366045@qq.com&quot;;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 在构造函数中初始化相关的参数。这是固定用法。</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public Mail() &#123;</span><br><span class="line">    &#x2F;&#x2F; 设置SSL连接、邮件环境</span><br><span class="line">    Security.addProvider(new Provider());</span><br><span class="line">    props &#x3D; System.getProperties();</span><br><span class="line">    props.setProperty(&quot;mail.smtp.host&quot;, &quot;smtp.qq.com&quot;);</span><br><span class="line">    props.setProperty(&quot;mail.smtp.socketFactory.class&quot;, SSL_FACTORY);</span><br><span class="line">    props.setProperty(&quot;mail.smtp.socketFactory.fallback&quot;, &quot;false&quot;);</span><br><span class="line">    props.setProperty(&quot;mail.smtp.port&quot;, &quot;465&quot;);</span><br><span class="line">    props.setProperty(&quot;mail.smtp.socketFactory.port&quot;, &quot;465&quot;);</span><br><span class="line">    props.setProperty(&quot;mail.smtp.auth&quot;, &quot;true&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 发送邮件</span><br><span class="line">   * @param subject</span><br><span class="line">   * @param content</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public void sendMail(String subject, String content) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 建立邮件会话</span><br><span class="line">      Session session &#x3D; Session.getDefaultInstance(props, new Authenticator() &#123;</span><br><span class="line">        &#x2F;&#x2F; 身份认证</span><br><span class="line">        protected PasswordAuthentication getPasswordAuthentication() &#123;</span><br><span class="line">          &#x2F;&#x2F; 账户 授权码</span><br><span class="line">          return new PasswordAuthentication(FROM_MAIL, FROM_MAIL_KEY);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      &#x2F;&#x2F; 建立邮件对象</span><br><span class="line">      MimeMessage message &#x3D; new MimeMessage(session);</span><br><span class="line">      &#x2F;&#x2F; 设置邮件的发件人、收件人、主题</span><br><span class="line">      &#x2F;&#x2F; 附带发件人名字</span><br><span class="line">      message.setFrom(new InternetAddress(FROM_MAIL));</span><br><span class="line">      message.setRecipients(Message.RecipientType.TO, TO_MAIL);</span><br><span class="line">      message.setSubject(subject);</span><br><span class="line">      &#x2F;&#x2F; 文本部分</span><br><span class="line">      message.setContent(content, &quot;text&#x2F;html;charset&#x3D;UTF-8&quot;);</span><br><span class="line">      message.saveChanges();</span><br><span class="line">      &#x2F;&#x2F; 发送邮件</span><br><span class="line">      Transport.send(message);</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import com.youkeda.test.j3.c9.model.Weather;</span><br><span class="line">import java.time.LocalDate;</span><br><span class="line">public class WeatherNotice &#123;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    WeatherPicker wp &#x3D; new WeatherPicker();</span><br><span class="line">    String content &#x3D; wp.pick();</span><br><span class="line">    Weather weather &#x3D; JSON.parseObject(content, Weather.class);</span><br><span class="line">    String cityName &#x3D; weather.getWeatherinfo().getCity();</span><br><span class="line">    String temp &#x3D; weather.getWeatherinfo().getTemp();</span><br><span class="line">    String time &#x3D; weather.getWeatherinfo().getTime();</span><br><span class="line">    LocalDate today &#x3D; LocalDate.now();</span><br><span class="line">    String todayStr &#x3D; today.toString();</span><br><span class="line">    String title &#x3D; &quot;天气报告&quot;;</span><br><span class="line">    String mailContent &#x3D; cityName + &quot;，&quot; + todayStr + &quot; &quot; + time + &quot;，气温：&quot; + temp + &quot;摄氏度。&quot;;</span><br><span class="line">    try &#123;</span><br><span class="line">      Double tempNum &#x3D; Double.valueOf(temp);</span><br><span class="line">      if (tempNum &lt;&#x3D; 20) &#123;</span><br><span class="line">        mailContent +&#x3D; &quot;请注意保暖。&quot;;</span><br><span class="line">      &#125; else if (tempNum &gt;&#x3D; 35) &#123;</span><br><span class="line">        mailContent +&#x3D; &quot;请注意防暑。&quot;;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        mailContent +&#x3D; &quot;请注意天气变化。&quot;;</span><br><span class="line">      &#125;</span><br><span class="line">      Mail mail &#x3D; new Mail();</span><br><span class="line">      mail.sendMail(title, mailContent);</span><br><span class="line">      System.out.println(&quot;发送成功&quot;);</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import org.apache.commons.lang3.StringUtils;</span><br><span class="line">public class WeatherPicker &#123;</span><br><span class="line">  &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">  private OkHttpClient okHttpClient;</span><br><span class="line">  public WeatherPicker() &#123;</span><br><span class="line">    &#x2F;&#x2F;1. 构建 okHttpClient 实例</span><br><span class="line">    okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private String getPageContentSync(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; 参数判断，未输入参数则直接返回</span><br><span class="line">    if (StringUtils.isBlank(url)) &#123;</span><br><span class="line">      return null;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;2.定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder().url(url).build();</span><br><span class="line">    &#x2F;&#x2F;3.使用client去请求</span><br><span class="line">    Call call &#x3D; okHttpClient.newCall(request);</span><br><span class="line">    String result &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F;4.获得返回结果</span><br><span class="line">      result &#x3D; call.execute().body().string();</span><br><span class="line">      System.out.println(&quot;call &quot; + url + &quot; , content&#39;s size&#x3D;&quot; + result.length());</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  public String pick() &#123;</span><br><span class="line">    String content &#x3D; getPageContentSync(&quot;http:&#x2F;&#x2F;www.weather.com.cn&#x2F;data&#x2F;sk&#x2F;101210106.html&quot;);</span><br><span class="line">    return content;</span><br><span class="line">  &#125;</span><br><span class="line">  public String pick(String url) &#123;</span><br><span class="line">    String content &#x3D; getPageContentSync(url);</span><br><span class="line">    return content;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>pom.xml:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot;</span><br><span class="line">         xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0 http:&#x2F;&#x2F;maven.apache.org&#x2F;xsd&#x2F;maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;&#x2F;modelVersion&gt;</span><br><span class="line">    &lt;groupId&gt;com.youkeda.course&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;app&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0-SNAPSHOT&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;&#x2F;project.reporting.outputEncoding&gt;</span><br><span class="line">        &lt;java.version&gt;1.8&lt;&#x2F;java.version&gt;</span><br><span class="line">        &lt;resource.delimiter&gt;@&lt;&#x2F;resource.delimiter&gt;</span><br><span class="line">        &lt;maven.compiler.source&gt;$&#123;java.version&#125;&lt;&#x2F;maven.compiler.source&gt;</span><br><span class="line">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;&#x2F;project.build.sourceEncoding&gt;</span><br><span class="line">        &lt;maven.compiler.target&gt;$&#123;java.version&#125;&lt;&#x2F;maven.compiler.target&gt;</span><br><span class="line">    &lt;&#x2F;properties&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;com.squareup.okhttp3&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;okhttp&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;4.1.0&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;javax.mail&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mail&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.4&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;fastjson&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.2.62&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.commons&lt;&#x2F;groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;commons-lang3&lt;&#x2F;artifactId&gt;</span><br><span class="line">          &lt;version&gt;3.9&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;&#x2F;dependencies&gt;</span><br><span class="line">&lt;&#x2F;project&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/10/note17/" rel="next" title="note17">
+                <i class="fa fa-chevron-left"></i> note17
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/1.jpg"
+                alt="沈高昂" />
+            
+              <p class="site-author-name" itemprop="name">沈高昂</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1：查询城市代号"><span class="nav-number">1.</span> <span class="nav-text">8-1：查询城市代号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2：查询城市天气"><span class="nav-number">2.</span> <span class="nav-text">8-2：查询城市天气</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-3：天气通过邮件发送（Weather-java与Weatherinfo和上面一样）"><span class="nav-number">3.</span> <span class="nav-text">8-3：天气通过邮件发送（Weather.java与Weatherinfo和上面一样）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沈高昂</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>

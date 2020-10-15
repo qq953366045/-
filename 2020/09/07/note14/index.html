@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="4-1：User-AgentHTTP header：HTTP消息头Headers是HTTP协议的一项重要内容，作用是在发起请求的时候，除了请求参数外，可以附加更多的息。   这里只要记住，Headers信息并不是写在URL中的，属于隐藏的数据，不能直观看到。###User-Agent：User-Agent是存放在Headers中的一种数据信息。作用是，在指定URL发送请求的时候，告诉服务端当前用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="note14">
+<meta property="og:url" content="http://yoursite.com/2020/09/07/note14/index.html">
+<meta property="og:site_name" content="咕噜咕噜咕噜">
+<meta property="og:description" content="4-1：User-AgentHTTP header：HTTP消息头Headers是HTTP协议的一项重要内容，作用是在发起请求的时候，除了请求参数外，可以附加更多的息。   这里只要记住，Headers信息并不是写在URL中的，属于隐藏的数据，不能直观看到。###User-Agent：User-Agent是存放在Headers中的一种数据信息。作用是，在指定URL发送请求的时候，告诉服务端当前用户">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-07T09:20:32.000Z">
+<meta property="article:modified_time" content="2020-10-15T07:18:24.421Z">
+<meta property="article:author" content="沈高昂">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/09/07/note14/"/>
+
+
+
+
+
+  <title>note14 | 咕噜咕噜咕噜</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">咕噜咕噜咕噜</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/07/note14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="沈高昂">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="咕噜咕噜咕噜">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">note14</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-07T17:20:32+08:00">
+                2020-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">Java网络编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="4-1：User-Agent"><a href="#4-1：User-Agent" class="headerlink" title="4-1：User-Agent"></a>4-1：User-Agent</h2><p><strong>HTTP header：</strong><br>HTTP消息头Headers是HTTP协议的一项重要内容，作用是在发起请求的时候，除了请求参数外，可以附加更多的息。   这里只要记住，Headers信息并不是写在URL中的，属于隐藏的数据，不能直观看到。<br>###User-Agent：<br><strong>User-Agent</strong>是存放在Headers中的一种数据信息。作用是，在指定URL发送请求的时候，告诉服务端当前用户的浏览器类型、版本，甚至操作系统、CPU等非隐私的技术信息。<br>服务器从Headers中的User-Agent信息获取到浏览器类型、版本等数据后，就认为是一个浏览器请求的环境了，就会给出响应。所以，我们只要在程序代码中，附加上User-Agent信息， 就能允许成功了。当然，这里的User-Agent是模拟的。我们来模拟一个win7+chrome的环境，User-Agent的写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mozilla&#x2F;5.0 (Windows NT 6.1; WOW64) AppleWebKit&#x2F;535.1 (KHTML, like Gecko) Chrome&#x2F;14.0.835.163 Safari&#x2F;535.1</span><br></pre></td></tr></table></figure>
+<p>学以致用：<br>模拟了一个User-Agent，程序中怎么用呢？实际上Okhttp3库已经支持Headers了，只需要在构建Request对象的时候，调用addHeader() 2方法即可： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Request request &#x3D; new Request.Builder()</span><br><span class="line">    .url(url)</span><br><span class="line">    .addHeader(&quot;User-Agent&quot;, &quot;&quot;)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+<p>addHeader()方法第一个参数是名称，第二个参数是值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.Response;</span><br><span class="line"></span><br><span class="line">public class ApiAsker &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public String getContent(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder()</span><br><span class="line">        .url(url)</span><br><span class="line">        &#x2F;&#x2F; 添加一个 header 信息</span><br><span class="line">        .addHeader(&quot;User-Agent&quot;, &quot;Mozilla&#x2F;5.0 (Windows NT 6.1; WOW64) AppleWebKit&#x2F;535.1 (KHTML, like Gecko) Chrome&#x2F;14.0.835.163 Safari&#x2F;535.1&quot;)    </span><br><span class="line">        .build();</span><br><span class="line">    &#x2F;&#x2F; 返回结果字符串</span><br><span class="line">    String result &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 执行请求</span><br><span class="line">      Response response &#x3D; okHttpClient.newCall(request).execute();</span><br><span class="line">      &#x2F;&#x2F; 获取响应内容</span><br><span class="line">      result &#x3D; response.body().string();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;http:&#x2F;&#x2F;ip.taobao.com&#x2F;service&#x2F;getIpInfo.php?ip&#x3D;117.89.35.58&amp;format&#x3D;json&quot;;</span><br><span class="line">    ApiAsker asker &#x3D; new ApiAsker();</span><br><span class="line">    String content &#x3D; asker.getContent(url);</span><br><span class="line">    System.out.println(&quot;查询结果文本：&quot; + content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子：查询豆瓣热门电影的前5部（API参数中page_limit的参数表示查询几条，这里是5所以查询5条数据）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.List;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.Response;</span><br><span class="line">public class ApiAsker &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public String getContent(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder()</span><br><span class="line">        .url(url)</span><br><span class="line">        &#x2F;&#x2F; 添加一个 header 信息</span><br><span class="line">        .addHeader(&quot;User-Agent&quot;, &quot;Mozilla&#x2F;5.0 (Windows NT 6.1; WOW64) AppleWebKit&#x2F;535.1 (KHTML, like Gecko) Chrome&#x2F;14.0.835.163 Safari&#x2F;535.1&quot;)</span><br><span class="line">        .build();</span><br><span class="line">    &#x2F;&#x2F; 返回结果字符串</span><br><span class="line">    String result &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 执行请求</span><br><span class="line">      Response response &#x3D; okHttpClient.newCall(request).execute();</span><br><span class="line">      &#x2F;&#x2F; 获取响应内容</span><br><span class="line">      result &#x3D; response.body().string();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;movie.douban.com&#x2F;j&#x2F;search_subjects?type&#x3D;movie&amp;tag&#x3D;热门&amp;page_limit&#x3D;5&amp;page_start&#x3D;0&quot;;</span><br><span class="line">    ApiAsker asker &#x3D; new ApiAsker();</span><br><span class="line">    String content &#x3D; asker.getContent(url);</span><br><span class="line">    &#x2F;&#x2F; 解析结果</span><br><span class="line">    System.out.println(&quot;电影名称:&quot;);</span><br><span class="line">    Map contentObj &#x3D; JSON.parseObject(content, Map.class);</span><br><span class="line">    List subjects &#x3D; (List)contentObj.get(&quot;subjects&quot;);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; subjects.size(); i++) &#123;</span><br><span class="line">      Map subObj &#x3D; (Map)subjects.get(i);</span><br><span class="line">      System.out.println(subObj.get(&quot;title&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-2：Referer"><a href="#4-2：Referer" class="headerlink" title="4-2：Referer"></a>4-2：Referer</h2><p>例子：已知某图片服务器的图片：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;photo.yupoo.com&#x2F;vibius&#x2F;GkRSowXr&#x2F;medish.jpg</span><br></pre></td></tr></table></figure>
+<p>打印http响应状态码以及最终响应的URL（先不设置Referer）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.Response;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class ImageAsker &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public void getContent(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder()</span><br><span class="line">        .url(url)</span><br><span class="line">        .build();</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 执行请求</span><br><span class="line">      Response response &#x3D; okHttpClient.newCall(request).execute();</span><br><span class="line">      &#x2F;&#x2F; 打印最终响应的地址</span><br><span class="line">      String realUrl &#x3D; response.request().url().toString();</span><br><span class="line">      System.out.println(&quot;最终响应地址：&quot; + realUrl);</span><br><span class="line">      &#x2F;&#x2F; 打印状态码</span><br><span class="line">      int code &#x3D; response.code();</span><br><span class="line">      System.out.println(&quot;状态码：&quot; + code);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;http:&#x2F;&#x2F;photo.yupoo.com&#x2F;vibius&#x2F;GkRSowXr&#x2F;medish.jpg&quot;;</span><br><span class="line">    ImageAsker asker &#x3D; new ImageAsker();</span><br><span class="line">    asker.getContent(url);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到最终响应地址和原地址不同了。<br>设置Referer后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.Response;</span><br><span class="line">public class ImageAsker &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public void getContent(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder()</span><br><span class="line">        .url(url)</span><br><span class="line">        .addHeader(&quot;Referer&quot;,&quot;http:&#x2F;&#x2F;photo.yupoo.com&#x2F;&quot;)</span><br><span class="line">        .build();</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 执行请求</span><br><span class="line">      Response response &#x3D; okHttpClient.newCall(request).execute();</span><br><span class="line">      &#x2F;&#x2F; 打印最终响应的地址</span><br><span class="line">      String realUrl &#x3D; response.request().url().toString();</span><br><span class="line">      System.out.println(&quot;最终响应地址：&quot; + realUrl);</span><br><span class="line">      &#x2F;&#x2F; 打印状态码</span><br><span class="line">      int code &#x3D; response.code();</span><br><span class="line">      System.out.println(&quot;状态码：&quot; + code);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;http:&#x2F;&#x2F;photo.yupoo.com&#x2F;vibius&#x2F;GkRSowXr&#x2F;medish.jpg&quot;;</span><br><span class="line">    ImageAsker asker &#x3D; new ImageAsker();</span><br><span class="line">    asker.getContent(url);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到最终响应地址是与原地址一模一样的了</p>
+<h2 id="4-3：Host"><a href="#4-3：Host" class="headerlink" title="4-3：Host"></a>4-3：Host</h2><p>Host表示当前请求的域名。虽然这个域名已经存在于URL中，但遇到复杂的场景，例如使用代理服务器、或者URL中 不写域名而是写IP地址进行请求等，设置Host 就非常有用了。<br>由于Host的作用和含义比较宽泛，就不能确定各种网站的 服务端会拿Host做什么，可以有很多作用。所以当前的学 习阶段会用就可以了。<br> 跟User-Agent和Referer一样，Host也是属于Headers数据的字段之一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Request request &#x3D; new Request.Builder()</span><br><span class="line">     .url(url)</span><br><span class="line">     .addHeader(&quot;Host&quot;, &quot;www.douban.com&quot;) </span><br><span class="line">     .build();</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>， Host 的值一定是一个域名且不带协议头。<br>下面请看抓取豆瓣搜索结果页面（ <a href="https://www.douban.com/search?source=suggest&amp;q=小丑" target="_blank" rel="noopener">https://www.douban.com/search?source=suggest&amp;q=小丑</a> ）的演示程序：</p>
+<pre><code>import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+public class GetPage {
+  /**
+   * 根据输入的url，读取页面内容并返回
+   */
+  public String getContent(String url) {
+    // okHttpClient 实例
+    OkHttpClient okHttpClient = new OkHttpClient();
+    // 定义一个request
+    Request request = new Request.Builder()
+        .url(url)
+        .addHeader(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36&quot;)
+        .addHeader(&quot;Referer&quot;, &quot;https://www.douban.com/&quot;)
+        .addHeader(&quot;Host&quot;, &quot;www.douban.com&quot;)
+        .build();
+    // 返回结果字符串
+    String result = null;
+    try {
+      // 执行请求
+      Response response = okHttpClient.newCall(request).execute();
+      // 获取响应内容
+      result = response.body().string();
+    } catch (IOException e) {
+      // 抓取异常
+      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);
+      e.printStackTrace();
+    }
+    return result;
+  }
+  public static void main(String[] args) {
+    String url = &quot;https://www.douban.com/search?source=suggest&amp;q=小丑&quot;;
+    GetPage asker = new GetPage();
+    String content = asker.getContent(url);
+    System.out.println(&quot;页面size = &quot; + content.length());
+  }
+}</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/06/note13/" rel="next" title="note13">
+                <i class="fa fa-chevron-left"></i> note13
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/08/note15/" rel="prev" title="note15">
+                note15 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/1.jpg"
+                alt="沈高昂" />
+            
+              <p class="site-author-name" itemprop="name">沈高昂</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1：User-Agent"><span class="nav-number">1.</span> <span class="nav-text">4-1：User-Agent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2：Referer"><span class="nav-number">2.</span> <span class="nav-text">4-2：Referer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3：Host"><span class="nav-number">3.</span> <span class="nav-text">4-3：Host</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沈高昂</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>

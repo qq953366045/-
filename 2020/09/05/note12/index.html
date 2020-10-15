@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2-1：Get请求-无参数Java功能非常强大，用来实现抓取网站内容夜非常简便，那么是如何实现它的呢？ 2-1-1：安装依赖库首先，我们需要安装一个库：Okhttp3，这是一个非常流行的HTTP库，可以简单、 快速的实现HTTP调用。安装Okhttp3的方式是在 pom.xml 文件中增加依赖： 12345678&lt;!-- https:&#x2F;&#x2F;mvnrepository.com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="note12">
+<meta property="og:url" content="http://yoursite.com/2020/09/05/note12/index.html">
+<meta property="og:site_name" content="咕噜咕噜咕噜">
+<meta property="og:description" content="2-1：Get请求-无参数Java功能非常强大，用来实现抓取网站内容夜非常简便，那么是如何实现它的呢？ 2-1-1：安装依赖库首先，我们需要安装一个库：Okhttp3，这是一个非常流行的HTTP库，可以简单、 快速的实现HTTP调用。安装Okhttp3的方式是在 pom.xml 文件中增加依赖： 12345678&lt;!-- https:&#x2F;&#x2F;mvnrepository.com">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-05T06:47:02.000Z">
+<meta property="article:modified_time" content="2020-10-15T07:19:23.752Z">
+<meta property="article:author" content="沈高昂">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/09/05/note12/"/>
+
+
+
+
+
+  <title>note12 | 咕噜咕噜咕噜</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">咕噜咕噜咕噜</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/05/note12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="沈高昂">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="咕噜咕噜咕噜">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">note12</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-05T14:47:02+08:00">
+                2020-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">Java网络编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="2-1：Get请求-无参数"><a href="#2-1：Get请求-无参数" class="headerlink" title="2-1：Get请求-无参数"></a>2-1：Get请求-无参数</h2><p>Java功能非常强大，用来实现抓取网站内容夜非常简便，那么是如何实现它的呢？</p>
+<h3 id="2-1-1：安装依赖库"><a href="#2-1-1：安装依赖库" class="headerlink" title="2-1-1：安装依赖库"></a>2-1-1：安装依赖库</h3><p>首先，我们需要安装一个库：Okhttp3，这是一个非常流行的HTTP库，可以简单、 快速的实现HTTP调用。<br>安装Okhttp3的方式是在 pom.xml 文件中增加依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;com.squareup.okhttp3&#x2F;okhttp --&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.squareup.okhttp3&lt;&#x2F;groupId&gt;    </span><br><span class="line">        &lt;artifactId&gt;okhttp&lt;&#x2F;artifactId&gt;    </span><br><span class="line">        &lt;version&gt;4.1.0&lt;&#x2F;version&gt;    </span><br><span class="line">      &lt;&#x2F;dependency&gt;  </span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
+<p>唯一的<dependencies>标签中，包含多个<dependency>标签，每一个<dependency>标签表示一个依赖库。书写时注意嵌套顺序哦。<br>pom.xml 文件的作用就是定义 Java 项目需要用到（或者说依赖到）哪些库。<br>不必纠结pom.xml的含义及原理，当前会写依赖标签即可。<br><strong>使用详解</strong><br>例如，我们要抓取“中国科学技术大学”首页的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line"></span><br><span class="line">public class GetPage &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public String getContent(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder().url(url).build();</span><br><span class="line">    &#x2F;&#x2F; 使用client去请求</span><br><span class="line">    Call call &#x3D; okHttpClient.newCall(request);</span><br><span class="line">    &#x2F;&#x2F; 返回结果字符串</span><br><span class="line">    String result &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 获得返回结果</span><br><span class="line">      result &#x3D; call.execute().body().string();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    GetPage getPage &#x3D; new GetPage();</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;www.ustc.edu.cn&#x2F;&quot;;</span><br><span class="line">    String content &#x3D; getPage.getContent(url);</span><br><span class="line">    System.out.println(&quot;call &quot; + url + &quot; , content&#x3D;&quot; + content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 Okhttp3 完成页面请求，需要三大步骤：</p>
+<ol>
+<li>实例化 OkHttpClient。使用OkHttpClient okHttpClient = new OkHttpClient();代码。 </li>
+<li>执行调用。<br>i. 在执行调用之前，需要实例化一个Request对象，作用是定义请求的各种参数 ，<br>Request request = new Request.Builder().url(url).build();<br>ii. 然后构建调用对象Call call = okHttpClient.newCall(request);<br>iii. 最后执行调用，如果调用失败可能抛异常，所以必须抓取异常。call.execute()就是执行调用的代码。</li>
+<li>call.execute()返回的其实是一个执行的结果对象，调用对象的方法即可获取返回的字符串内容: call.execute().body().string();<br>演示的代码基本上都属于固定写法。<br>任何时候都不要忘记pom.xml文件添加依赖，以及代码中使用import语句引入 使用的类哦<br>由于 Java 一切皆对象的理念，所以实际上代码量可能比大家想象的要大。 但是没关系，我们把调用的步骤封装在一个getContent()方法中，比较容易理解，也方便复用。<br>但是这个时候返回的内容有很多无效的内容，所以很多时候我们使用程序调用API，获取到需要的数据。</li>
+</ol>
+<p><strong>什么是 API</strong><br>API全称 Application Programming Interface，应用程序接口，API一般是指一些预先定义的函数，目的是可以为开发人员快速访问某一程序，而无需了解和访问源码，或理解它内部工作机制的细节。<br>简单的讲，API可以快速调用某个程序。 这在计算机里叫做接口，我们生活中也有很多接口，比如U盘可以储存信息，我 们访问U盘，只需要把U盘插到电脑上就可以访问，插入的USB接口就是一个接 口，我们不需要关心它是如何实现的。 又比如电视机上有很多接口，有的连话筒，有的连视频，我们只需要直接插上对 应的线就可以实现相应的功能，并不关心它的具体机制。<br>调用 API<br>我们看一个查询杭州市余杭区天气 API ： ```<br><a href="http://www.weather.com.cn/data/sk/101210106.html" target="_blank" rel="noopener">http://www.weather.com.cn/data/sk/101210106.html</a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把这个URL贴到浏览器，可以看到查询返回结果为：</span><br></pre></td></tr></table></figure>
+<p>{<br>  “weatherinfo”: {<br>    “city”: “浣欐澀”,<br>    “cityid”: “101210106”,<br>    “temp”: “24”,<br>    “WD”: “鍖楅”,<br>    “WS”: “灏忎簬3绾�”,<br>    “SD”: “77%”,<br>    “AP”: “1000.7hPa”,<br>    “njd”: “鏆傛棤瀹炲喌”,<br>    “WSE”: “&lt;3”,<br>    “time”: “17:50”,<br>    “sm”: “3.6”,<br>    “isRadar”: “0”,<br>    “Radar”: “”<br>  }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在浏览器中可能看到中文是乱码，这是浏览器的问题，先忽略。 所谓API，本质上就是一个URL。开头也是http（或https），只是返回的内容有明显的区别，没有大量多余的字符。API返回的内容统称为数据。</span><br><span class="line">## 2-2：Get请求-有参数</span><br></pre></td></tr></table></figure>
+<p>import java.io.IOException;<br>import okhttp3.Call;<br>import okhttp3.OkHttpClient;<br>import okhttp3.Request;</p>
+<p>public class ApiAsker {<br>  /**</p>
+<ul>
+<li>根据输入的url，读取页面内容并返回</li>
+<li>/<br>public String getContent(String url) {<br>// okHttpClient 实例<br>OkHttpClient okHttpClient = new OkHttpClient();<br>// 定义一个request<br>Request request = new Request.Builder().url(url).build();<br>// 使用client去请求<br>Call call = okHttpClient.newCall(request);<br>// 返回结果字符串<br>String result = null;<br>try {<br>  // 获得返回结果<br>  result = call.execute().body().string();<br>} catch (IOException e) {<br>  // 抓取异常<br>  System.out.println(“request “ + url + “ error . “);<br>  e.printStackTrace();<br>}<br>return result;<br>}<br>public static void main(String[] args) {<br>String url = “<a href="http://ip-api.com/json/?lang=zh-CN&quot;" target="_blank" rel="noopener">http://ip-api.com/json/?lang=zh-CN&quot;</a>;<br>ApiAsker asker = new ApiAsker();<br>String content = asker.getContent(url);<br>System.out.println(“API调用结果”);<br>System.out.println(content);<br>}<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## 2-3：POST表单数据</span><br><span class="line">提交数据至服务端进行增加、修改、删除等操作，都是POST操作。与王陆登记入住客栈类似，我们在网页上提交表单进行登录的场景，就是典型的POST操作。</span><br><span class="line">post（）方法</span><br><span class="line">Okhttp3库也支持POST操作。我们前面学习的调用API属于GET操作。不同的是，POST操作时，数据不是放在URL中的，而是放在表单中提交的。</span><br><span class="line">所以程序实现需要构建一个FormBody表单对象，用于放置表单数据。核心代码如下：</span><br></pre></td></tr></table></figure>
+Builder builder = new FormBody.Builder();<br>// 设置数据，第一个参数是数据名，第二个参数是数据值<br>builder.add(“”, “”);<br>FormBody formBody = builder.build();</li>
+</ul>
+<p>Request request = new Request.Builder().url(url).post(formBody).build();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数据的写法是不是很眼熟呢？整体步骤跟请求API相似，不 同的是，在构建Request对象时，使用 .post(formBody)语句放入表单对象，就表示执行POST操作啦。</span><br><span class="line">这段代码仍然属于固定写法，这里要学会熟练使用。 请看下列代码演示 POST 登录的过程：</span><br></pre></td></tr></table></figure>
+<p>import java.io.IOException;<br>import java.util.Map;<br>import java.util.HashMap;<br>import okhttp3.Call;<br>import okhttp3.OkHttpClient;<br>import okhttp3.Request;<br>import okhttp3.FormBody;<br>import okhttp3.FormBody.Builder;</p>
+<p>public class FormPoster {<br>  /**</p>
+<ul>
+<li>向指定的 url 提交数据</li>
+<li>/<br>public String postContent(String url, Map&lt;String, String&gt; formData) {<br>// okHttpClient 实例<br>OkHttpClient okHttpClient = new OkHttpClient();<br>//post方式提交的数据<br>Builder builder = new FormBody.Builder();<br>// 放入表单数据<br>for (String key : formData.keySet()) {<br>  builder.add(key, formData.get(key));<br>}<br>// 构建 FormBody 对象<br>FormBody formBody = builder.build();<br>// 指定 post 方式提交FormBody<br>Request request = new Request.Builder().url(url).post(formBody).build();<br>// 使用client去请求<br>Call call = okHttpClient.newCall(request);<br>// 返回结果字符串<br>String result = null;<br>try {<br>  // 获得返回结果<br>  result = call.execute().body().string();<br>} catch (IOException e) {<br>  // 抓取异常<br>  System.out.println(“request “ + url + “ error . “);<br>  e.printStackTrace();<br>}<br>return result;<br>}<br>public static void main(String[] args) {<br>String url = “<a href="https://gitee.com/login&quot;" target="_blank" rel="noopener">https://gitee.com/login&quot;</a>;<br>Map&lt;String, String&gt; formData = new HashMap();<br>formData.put(“user[login]”, “17177466748”);<br>FormPoster poster = new FormPoster();<br>String content = poster.postContent(url, formData);<br>System.out.println(“API调用结果”);<br>System.out.println(content);<br>}<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">我们仍然把发送表单数据的过程，封装为postContent()方 法，方便重用。这里的重点是，理解使用FormBody对象的 实例来存放表单数据。 </span><br><span class="line">执行结果说明:</span><br><span class="line">gitee对密码做了特殊加密，所以登录会失败，但是这也说明gitee已经收到了请求，只是判断登录不成功而已。 注意所有的符号都是英文字符哦。</span><br><span class="line">例子：查询手机号信息：</span><br></pre></td></tr></table></figure>
+import java.io.IOException;<br>import java.util.Map;<br>import java.util.HashMap;<br>import okhttp3.Call;<br>import okhttp3.OkHttpClient;<br>import okhttp3.Request;<br>import okhttp3.FormBody;<br>import okhttp3.FormBody.Builder;</li>
+</ul>
+<p>public class FormPoster {<br>  /**</p>
+<ul>
+<li>向指定的 url 提交数据</li>
+<li>/<br>public String postContent(String url, Map&lt;String, String&gt; formData) {<br>// okHttpClient 实例<br>OkHttpClient okHttpClient = new OkHttpClient();<br>//post方式提交的数据<br>Builder builder = new FormBody.Builder();<br>// 放入表单数据<br>for (String key : formData.keySet()) {<br>  builder.add(key, formData.get(key));<br>}<br>// 构建 FormBody 对象<br>FormBody formBody = builder.build();<br>// 指定 post 方式提交FormBody<br>Request request = new Request.Builder().url(url).post(formBody).build();<br>// 使用client去请求<br>Call call = okHttpClient.newCall(request);<br>// 返回结果字符串<br>String result = null;<br>try {<br>  // 获得返回结果<br>  result = call.execute().body().string();<br>} catch (IOException e) {<br>  // 抓取异常<br>  System.out.println(“request “ + url + “ error . “);<br>  e.printStackTrace();<br>}<br>return result;<br>}<br>public static void main(String[] args) {<br>String url = “<a href="http://tcc.taobao.com/cc/json/mobile_tel_segment.htm&quot;" target="_blank" rel="noopener">http://tcc.taobao.com/cc/json/mobile_tel_segment.htm&quot;</a>;<br>Map&lt;String, String&gt; formData = new HashMap();<br>formData.put(“tel”, “15195976376”);<br>FormPoster poster = new FormPoster();<br>String content = poster.postContent(url, formData);<br>System.out.println(“API调用结果”);<br>System.out.println(content);<br>}<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## 2-4：POST JSON数据</span><br><span class="line">在日常开发工作中，除了提交表单数据以外，也经常用到提交JSON 数据。 跟表单数据提交方法一样，也是调用post()方法，只是参数不再使用FormBody对象，而是使用RequestBody</span><br><span class="line">示例</span><br><span class="line">下列程序演示用JSON方法提交数据，注册一个新用户，数据包括：</span><br></pre></td></tr></table></figure>
+pom.xml:(加在<dependencies>和</dependencies>之间)<!-- JSON 操作库 -->
+  <dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.2.62</version>
+  </dependency>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96;</span><br><span class="line">JsonPoster.java：</span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.MediaType;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.RequestBody;</span><br><span class="line"></span><br><span class="line">public class JsonPoster &#123;</span><br><span class="line">  &#x2F;&#x2F; 定义提交数据的类型</span><br><span class="line">  public static final MediaType JSON_TYPE &#x3D; MediaType.parse(&quot;application&#x2F;json; charset&#x3D;utf-8&quot;);</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 向指定的 url 提交数据，以 json 的方式</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public String postContent(String url, Map&lt;String, String&gt; datas) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 数据对象转换成 json 格式字符串</span><br><span class="line">    String param &#x3D; JSON.toJSONString(datas);</span><br><span class="line">    &#x2F;&#x2F;post方式提交的数据</span><br><span class="line">    RequestBody requestBody &#x3D; RequestBody.create(JSON_TYPE, param);</span><br><span class="line">    Request request &#x3D; new Request.Builder().url(url).post(requestBody).build();</span><br><span class="line">    &#x2F;&#x2F; 使用client去请求</span><br><span class="line">    Call call &#x3D; okHttpClient.newCall(request);</span><br><span class="line">    &#x2F;&#x2F; 返回结果字符串</span><br><span class="line">    String result &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 获得返回结果</span><br><span class="line">      result &#x3D; call.execute().body().string();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;www.fastmock.site&#x2F;mock&#x2F;3d95acf3f26358ef032d8a23bfdead99&#x2F;api&#x2F;posts&quot;;</span><br><span class="line">    Map&lt;String, String&gt; datas &#x3D; new HashMap();</span><br><span class="line">    datas.put(&quot;name&quot;, &quot;张飞&quot;);</span><br><span class="line">    datas.put(&quot;secondName&quot;, &quot;翼德&quot;);</span><br><span class="line">    JsonPoster poster &#x3D; new JsonPoster();</span><br><span class="line">    String content &#x3D; poster.postContent(url, datas);</span><br><span class="line">    System.out.println(&quot;API调用结果&quot;);</span><br><span class="line">    System.out.println(content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+从 console 打印结果可以看到，服务器注册成功，并生了新 用户的 id 号。
+**详解** 
+实现 JSON 方式提交数据的步骤：
+1. 将数据转换成JSON格式的字符串，调用JSON.toJSONString()方法即可。
+1. 创建RequestBody实例，注意需要指定提交的类型是application/json; charset=utf-8 utf-8。这里的utf-8是API规定的编码格式。此例子中，API 规定数据传输的编码格式是utf-8
+--编码属于另一个比较长的话题，属于课外知识了，有兴趣的可以看一下https://www.cnblogs.com/csguo/p/7402034.html
+1. 构建Request实例对象时，调用 .post(requestBody)即表示使用 JSON的方式提交数据。  
+这些基本上都是固定写法，需要熟练应用。
+
+
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/29/note11/" rel="next" title="note11">
+                <i class="fa fa-chevron-left"></i> note11
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/06/note13/" rel="prev" title="note13">
+                note13 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/1.jpg"
+                alt="沈高昂" />
+            
+              <p class="site-author-name" itemprop="name">沈高昂</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1：Get请求-无参数"><span class="nav-number">1.</span> <span class="nav-text">2-1：Get请求-无参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1：安装依赖库"><span class="nav-number">1.1.</span> <span class="nav-text">2-1-1：安装依赖库</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沈高昂</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>

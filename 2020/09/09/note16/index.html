@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="6-1:cookie如果没有mine，就选第一个跟浏览器地址栏相同的URL请求打开网页按F12，按图步骤拷贝cookie的值，放到cookie.txt文件中。然后用编码把cookie信息字符串转换为Map类型的数据 123456789101112131415161718192021222324252627282930313233343536373839import java.io.IOExcept">
+<meta property="og:type" content="article">
+<meta property="og:title" content="note16">
+<meta property="og:url" content="http://yoursite.com/2020/09/09/note16/index.html">
+<meta property="og:site_name" content="咕噜咕噜咕噜">
+<meta property="og:description" content="6-1:cookie如果没有mine，就选第一个跟浏览器地址栏相同的URL请求打开网页按F12，按图步骤拷贝cookie的值，放到cookie.txt文件中。然后用编码把cookie信息字符串转换为Map类型的数据 123456789101112131415161718192021222324252627282930313233343536373839import java.io.IOExcept">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-09T12:40:55.000Z">
+<meta property="article:modified_time" content="2020-10-15T07:17:24.633Z">
+<meta property="article:author" content="沈高昂">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/09/09/note16/"/>
+
+
+
+
+
+  <title>note16 | 咕噜咕噜咕噜</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">咕噜咕噜咕噜</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/note16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="沈高昂">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="咕噜咕噜咕噜">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">note16</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-09T20:40:55+08:00">
+                2020-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">Java网络编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="6-1-cookie"><a href="#6-1-cookie" class="headerlink" title="6-1:cookie"></a>6-1:cookie</h2><p>如果没有mine，就选第一个跟浏览器地址栏相同的URL请求<br>打开网页按F12，按图步骤拷贝cookie的值，放到cookie.txt文件中。<br>然后用编码把cookie信息字符串转换为Map类型的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import okhttp3.Call;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line">import okhttp3.Response;</span><br><span class="line">public class PageAsker &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public String getContent(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; okHttpClient 实例</span><br><span class="line">    OkHttpClient okHttpClient &#x3D; new OkHttpClient();</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder()</span><br><span class="line">        .url(url)</span><br><span class="line">        .addHeader(&quot;User-Agent&quot;, &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;78.0.3904.108 Safari&#x2F;537.36&quot;)</span><br><span class="line">        .addHeader(&quot;Referer&quot;, &quot;https:&#x2F;&#x2F;www.douban.com&#x2F;mine&quot;)</span><br><span class="line">        .addHeader(&quot;Host&quot;, &quot;www.douban.com&quot;)</span><br><span class="line">        .addHeader(&quot;Cookie&quot;, ReadFileTool.readContent(&quot;cookie.txt&quot;))</span><br><span class="line">        .build();</span><br><span class="line">    &#x2F;&#x2F; 返回结果字符串</span><br><span class="line">    String result &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      &#x2F;&#x2F; 执行请求</span><br><span class="line">      Response response &#x3D; okHttpClient.newCall(request).execute();</span><br><span class="line">      result &#x3D; response.body().string();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;www.douban.com&#x2F;mine&quot;;</span><br><span class="line">    PageAsker asker &#x3D; new PageAsker();</span><br><span class="line">    String content &#x3D; asker.getContent(url);</span><br><span class="line">    System.out.println(content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>读文件工具类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import java.io.FileReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">public class ReadFileTool &#123;</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 读取指定文件的内容</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public static String readContent(String fileName) &#123;</span><br><span class="line">    FileReader fr &#x3D; null;</span><br><span class="line">    StringBuilder strBuilder &#x3D; new StringBuilder();</span><br><span class="line">    try &#123;</span><br><span class="line">      fr &#x3D; new FileReader(fileName);</span><br><span class="line">      int ch &#x3D; 0;</span><br><span class="line">      while ((ch &#x3D; fr.read()) !&#x3D; -1) &#123;</span><br><span class="line">        strBuilder.append((char) ch);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        if (fr !&#x3D; null) &#123;</span><br><span class="line">          fr.close();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; catch (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return strBuilder.toString();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-2：session"><a href="#6-2：session" class="headerlink" title="6-2：session"></a>6-2：session</h2><p>但cookie的弊端是， cookie是存放在客户端浏览器的， 而且是临时的，登录后还想以登录状态与服务器通讯，就比 较麻烦。<br>这就需要在程序中使用Session对象来解决这个问题。下面 我们通过模拟登录时光网来学会如何应用Session对象。 </p>
+<h3 id="6-2-1：时光网登录"><a href="#6-2-1：时光网登录" class="headerlink" title="6-2-1：时光网登录"></a>6-2-1：时光网登录</h3><p>输入 <a href="http://my.mtime.com/profile/basic/打开时光网注册。" target="_blank" rel="noopener">http://my.mtime.com/profile/basic/打开时光网注册。</a></p>
+<h3 id="6-2-2：收集信息"><a href="#6-2-2：收集信息" class="headerlink" title="6-2-2：收集信息"></a>6-2-2：收集信息</h3><p>在登录界面F12进入signinLogin日志，找到下列数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 登录地址 </span><br><span class="line">2. 执行方式（GET&#x2F;POST） </span><br><span class="line">3. HOST </span><br><span class="line">4. Referer </span><br><span class="line">5. User-Agent </span><br><span class="line">6. 表单数据，数据名称和数据值</span><br></pre></td></tr></table></figure>
+<h2 id="6-2-3：编码实现"><a href="#6-2-3：编码实现" class="headerlink" title="6-2-3：编码实现"></a>6-2-3：编码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import okhttp3.Cookie;</span><br><span class="line">import okhttp3.CookieJar;</span><br><span class="line">import okhttp3.FormBody;</span><br><span class="line">import okhttp3.FormBody.Builder;</span><br><span class="line">import okhttp3.HttpUrl;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line"></span><br><span class="line">public class PageLoginer &#123;</span><br><span class="line">  &#x2F;&#x2F; 用 CookieJar 实现 cookie 的存储，便于登录后请求其它 URL 可以复用</span><br><span class="line">  private static final OkHttpClient okHttpClient &#x3D; new OkHttpClient.Builder()</span><br><span class="line">      .cookieJar(new CookieJar() &#123;         &#x2F;&#x2F;此处用了匿名类new CookieJar()方便复用</span><br><span class="line">        &#x2F;&#x2F; 把登录完毕后的 cookie 存储下来，再次发请求的时候复用</span><br><span class="line">        private final HashMap&lt;String, List&lt;Cookie&gt;&gt; cookieStore &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">        @Override</span><br><span class="line">        public void saveFromResponse(HttpUrl url, List&lt;Cookie&gt; cookies) &#123;</span><br><span class="line">          cookieStore.put(&quot;mtime.com&quot;, cookies);</span><br><span class="line">          System.out.println(&quot;[saveFromResponse]url.host()&#x3D;&quot; + url.host());</span><br><span class="line">        &#125;</span><br><span class="line">        @Override</span><br><span class="line">        public List&lt;Cookie&gt; loadForRequest(HttpUrl url) &#123;</span><br><span class="line">          System.out.println(&quot;[loadForRequest]url.host()&#x3D;&quot; + url.host());</span><br><span class="line">          List&lt;Cookie&gt; cookies &#x3D; cookieStore.get(&quot;mtime.com&quot;);</span><br><span class="line">          return cookies !&#x3D; null ? cookies : new ArrayList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .build();</span><br><span class="line">  public String postContent(String url, Map&lt;String, String&gt; formData) &#123;</span><br><span class="line">    &#x2F;&#x2F;post方式提交的数据</span><br><span class="line">    Builder builder &#x3D; new FormBody.Builder();</span><br><span class="line">    &#x2F;&#x2F; 放入表单数据</span><br><span class="line">    for (String key : formData.keySet()) &#123;</span><br><span class="line">      builder.add(key, formData.get(key));</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 构建 FormBody 对象</span><br><span class="line">    FormBody formBody &#x3D; builder.build();</span><br><span class="line">    &#x2F;&#x2F; 指定 post 方式提交FormBody</span><br><span class="line">    Request request &#x3D; new Request.Builder()</span><br><span class="line">        .url(url)</span><br><span class="line">        .post(formBody)</span><br><span class="line">        .addHeader(&quot;User-Agent&quot;,</span><br><span class="line">            &quot;Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;83.0.4103.116 Safari&#x2F;537.36&quot;)</span><br><span class="line">        .addHeader(&quot;Referer&quot;,&quot;https:&#x2F;&#x2F;passport.mtime.com&#x2F;member&#x2F;signin&quot;)</span><br><span class="line">        .addHeader(&quot;Host&quot;,&quot;passport.mtime.com&quot;)</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 返回结果字符串</span><br><span class="line">    String result &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      result &#x3D; okHttpClient.newCall(request).execute().body().string();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      System.out.println(&quot;request &quot; + url + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    &#x2F;&#x2F; 登录页面 url</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;passport.mtime.com&#x2F;member&#x2F;signinLogin&quot;;</span><br><span class="line">    &#x2F;&#x2F; 登录表单数据</span><br><span class="line">    Map&lt;String, String&gt; formData &#x3D; new HashMap();</span><br><span class="line">    formData.put(&quot;loginEmailText&quot;, &quot;15195976376&quot;);</span><br><span class="line">    formData.put(&quot;loginPasswordText&quot;, &quot;f9a77916b9eb4e0eda5e14dd19515a7c&quot;);</span><br><span class="line">    formData.put(&quot;isvcode&quot;, &quot;true&quot;);</span><br><span class="line">    formData.put(&quot;isAutoSign&quot;, &quot;false&quot;);</span><br><span class="line">    PageLoginer asker &#x3D; new PageLoginer();</span><br><span class="line">    String content &#x3D; asker.postContent(url, formData);</span><br><span class="line">    System.out.println(content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot; xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot; xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0 http:&#x2F;&#x2F;maven.apache.org&#x2F;xsd&#x2F;maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;&#x2F;modelVersion&gt;</span><br><span class="line">    &lt;groupId&gt;com.youkeda.course&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;app&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0-SNAPSHOT&lt;&#x2F;version&gt;</span><br><span class="line"></span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;&#x2F;project.reporting.outputEncoding&gt;</span><br><span class="line">        &lt;java.version&gt;1.8&lt;&#x2F;java.version&gt;</span><br><span class="line">        &lt;resource.delimiter&gt;@&lt;&#x2F;resource.delimiter&gt;</span><br><span class="line">        &lt;maven.compiler.source&gt;$&#123;java.version&#125;&lt;&#x2F;maven.compiler.source&gt;</span><br><span class="line">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;&#x2F;project.build.sourceEncoding&gt;</span><br><span class="line">        &lt;maven.compiler.target&gt;$&#123;java.version&#125;&lt;&#x2F;maven.compiler.target&gt;</span><br><span class="line">    &lt;&#x2F;properties&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.squareup.okhttp3&lt;&#x2F;groupId&gt;    </span><br><span class="line">        &lt;artifactId&gt;okhttp&lt;&#x2F;artifactId&gt;    </span><br><span class="line">        &lt;version&gt;4.1.0&lt;&#x2F;version&gt;    </span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;&#x2F;dependencies&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;project&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="6-3：复用session"><a href="#6-3：复用session" class="headerlink" title="6-3：复用session"></a>6-3：复用session</h2><p>在6-2的基础上使用session对象再次发出请求即可完成这些必须登录的请求。<br>除了时光网的登录，还有请求“我的电影票订单”页面 <a href="http://my.mtime.com/account/" target="_blank" rel="noopener">http://my.mtime.com/account/</a><br>分析执行两次请求的过程，实际上过程是类似的，区别是Request不同，所以，又做了一次重构，把真正执行的过程 封装成一个方法：doExcute ，被其它postContent() 和 getContent()方法调用。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import okhttp3.Cookie;</span><br><span class="line">import okhttp3.CookieJar;</span><br><span class="line">import okhttp3.FormBody;</span><br><span class="line">import okhttp3.FormBody.Builder;</span><br><span class="line">import okhttp3.HttpUrl;</span><br><span class="line">import okhttp3.OkHttpClient;</span><br><span class="line">import okhttp3.Request;</span><br><span class="line"></span><br><span class="line">public class PageLoginer &#123;</span><br><span class="line">  &#x2F;&#x2F; 用 CookieJar 实现 cookie 的存储，便于登录后请求其它 URL 可以复用</span><br><span class="line">  private static final OkHttpClient okHttpClient &#x3D; new OkHttpClient.Builder()</span><br><span class="line">      .cookieJar(new CookieJar() &#123;</span><br><span class="line">        private final HashMap&lt;String, List&lt;Cookie&gt;&gt; cookieStore &#x3D; new HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void saveFromResponse(HttpUrl url, List&lt;Cookie&gt; cookies) &#123;</span><br><span class="line">          cookieStore.put(&quot;mtime.com&quot;, cookies);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public List&lt;Cookie&gt; loadForRequest(HttpUrl url) &#123;</span><br><span class="line">          List&lt;Cookie&gt; cookies &#x3D; cookieStore.get(&quot;mtime.com&quot;);</span><br><span class="line">          return cookies !&#x3D; null ? cookies : new ArrayList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .build();</span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 向指定的 URL 提交数据，并返回提交后的结果</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public String postContent(String url, Map&lt;String, String&gt; formData) &#123;</span><br><span class="line">    &#x2F;&#x2F;post方式提交的数据</span><br><span class="line">    Builder builder &#x3D; new FormBody.Builder();</span><br><span class="line">    &#x2F;&#x2F; 放入表单数据</span><br><span class="line">    for (String key : formData.keySet()) &#123;</span><br><span class="line">      builder.add(key, formData.get(key));</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 构建 FormBody 对象</span><br><span class="line">    FormBody formBody &#x3D; builder.build();</span><br><span class="line">    &#x2F;&#x2F; 指定 post 方式提交FormBody</span><br><span class="line">    Request request &#x3D; new Request.Builder()</span><br><span class="line">        .url(url)</span><br><span class="line">        .post(formBody)</span><br><span class="line">        .addHeader(&quot;User-Agent&quot;,</span><br><span class="line">            &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;78.0.3904.108 Safari&#x2F;537.36&quot;)</span><br><span class="line">        .addHeader(&quot;Referer&quot;,</span><br><span class="line">            &quot;https:&#x2F;&#x2F;passport.mtime.com&#x2F;member&#x2F;signin&#x2F;?redirectUrl&#x3D;http%3A%2F%2Fwww.mtime.com%2F&quot;)</span><br><span class="line">        .addHeader(&quot;Host&quot;, &quot;passport.mtime.com&quot;)</span><br><span class="line">        .build();</span><br><span class="line">    return doExcute(request);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * 根据输入的url，读取页面内容并返回</span><br><span class="line">   *&#x2F;</span><br><span class="line">  public String getContent(String url) &#123;</span><br><span class="line">    &#x2F;&#x2F; 定义一个request</span><br><span class="line">    Request request &#x3D; new Request.Builder()</span><br><span class="line">        .url(url)</span><br><span class="line">        .addHeader(&quot;User-Agent&quot;,</span><br><span class="line">            &quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;78.0.3904.108 Safari&#x2F;537.36&quot;)</span><br><span class="line">        .addHeader(&quot;Host&quot;,&quot;my.mtime.com&quot;)</span><br><span class="line">        .build();</span><br><span class="line">    return doExcute(request);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private String doExcute(Request request) &#123;</span><br><span class="line">    &#x2F;&#x2F; 返回结果字符串</span><br><span class="line">    String result &#x3D; null;</span><br><span class="line">    try &#123;</span><br><span class="line">      result &#x3D; okHttpClient.newCall(request).execute().body().string();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      &#x2F;&#x2F; 抓取异常</span><br><span class="line">      System.out.println(&quot;request &quot; + request.url() + &quot; error . &quot;);</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    PageLoginer asker &#x3D; new PageLoginer();</span><br><span class="line">    &#x2F;&#x2F; 完成登录</span><br><span class="line">    String url &#x3D; &quot;https:&#x2F;&#x2F;passport.mtime.com&#x2F;member&#x2F;signinLogin&quot;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 登录表单数据</span><br><span class="line">    Map&lt;String, String&gt; formData &#x3D; new HashMap();</span><br><span class="line">    formData.put(&quot;loginEmailText&quot;, &quot;15195976376&quot;);</span><br><span class="line">    formData.put(&quot;loginPasswordText&quot;, &quot;f9a77916b9eb4e0eda5e14dd19515a7c&quot;);</span><br><span class="line">    formData.put(&quot;isvcode&quot;, &quot;true&quot;);</span><br><span class="line">    formData.put(&quot;isAutoSign&quot;, &quot;false&quot;);</span><br><span class="line">    String content &#x3D; asker.postContent(url, formData);</span><br><span class="line">    System.out.println(&quot;login result:&quot;);</span><br><span class="line">    System.out.println(content);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 请求我的订单</span><br><span class="line">    String myOrderUrl &#x3D; &quot;http:&#x2F;&#x2F;my.mtime.com&#x2F;account&#x2F;ecommerce&#x2F;orderList&#x2F;&quot;;</span><br><span class="line">    String myOrderContent &#x3D; asker.getContent(myOrderUrl);</span><br><span class="line">    System.out.println(&quot;orderList result:&quot;);</span><br><span class="line">    System.out.println(myOrderContent);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/08/note15/" rel="next" title="note15">
+                <i class="fa fa-chevron-left"></i> note15
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/10/note17/" rel="prev" title="note17">
+                note17 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/1.jpg"
+                alt="沈高昂" />
+            
+              <p class="site-author-name" itemprop="name">沈高昂</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-cookie"><span class="nav-number">1.</span> <span class="nav-text">6-1:cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2：session"><span class="nav-number">2.</span> <span class="nav-text">6-2：session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-1：时光网登录"><span class="nav-number">2.1.</span> <span class="nav-text">6-2-1：时光网登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-2：收集信息"><span class="nav-number">2.2.</span> <span class="nav-text">6-2-2：收集信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-3：编码实现"><span class="nav-number">3.</span> <span class="nav-text">6-2-3：编码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3：复用session"><span class="nav-number">4.</span> <span class="nav-text">6-3：复用session</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沈高昂</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
